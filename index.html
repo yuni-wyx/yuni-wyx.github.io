@@ -2,362 +2,3230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yuni’s Universe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuni Wu — ML Engineer | Data & AI Systems</title>
+  <meta
+    name="description"
+    content="Yuni Wu is an ML Engineer building production-ready AI systems across computer vision, LLM applications, and cloud infrastructure."
+  />
 
-  <!-- Website Icon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-  <link rel="apple-touch-icon" href="./img/favicon.png">
-  <meta name="theme-color" content="#0a0f1f">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="./css/styles.css"/>
+  <!-- Standard favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/icon.png">
 
-  <!-- ScrollReveal -->
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal" defer></script>
+  <!-- Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/icon.png">
+
+  <!-- PWA / Chrome -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#080c14">
+
+  <style>
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1220;
+      --bg3: #101828;
+      --panel: #0f1727;
+      --rose: #d4926a;
+      --rose-dim: #a0694a;
+      --cream: #f0e8dc;
+      --cream-dim: #c8b9a8;
+      --text: #ebe3d8;
+      --text-dim: #a49a8d;
+      --text-soft: #8b8378;
+      --border: rgba(212, 146, 106, 0.14);
+      --border2: rgba(240, 232, 220, 0.08);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+      --ff-head: "Cormorant Garamond", Georgia, serif;
+      --ff-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ff-mono: "DM Mono", "Courier New", monospace;
+      --max: 1180px;
+      --radius: 20px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.85;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 100px 56px;
+      position: relative;
+      z-index: 10;
+    }
+
+    section {
+      position: relative;
+      z-index: 10;
+    }
+
+    .s-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .s-label::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--rose);
+    }
+
+    .s-title {
+      margin-bottom: 56px;
+      font-family: var(--ff-head);
+      font-size: clamp(40px, 5vw, 66px);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      font-weight: 300;
+    }
+
+    .s-title em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      color: var(--text-dim);
+      margin-top: -20px;
+      margin-bottom: 44px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 300;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 56px;
+      background: linear-gradient(to bottom, rgba(8, 12, 20, 0.94) 62%, transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-mark {
+      text-decoration: none;
+      font-family: var(--ff-head);
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+    }
+
+    .nav-mark span {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dim);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--rose);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--cream);
+      position: relative;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .nav-toggle span::before {
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      top: 5px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 72px 16px auto 16px;
+      z-index: 290;
+      background: rgba(15, 23, 39, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(212, 146, 106, 0.08);
+      color: var(--rose);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 128px 56px 90px;
+      z-index: 10;
+    }
+
+    .hero-shell {
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) 340px;
+      gap: 44px;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: 0;
+      animation: riseIn 0.8s 0.08s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--rose);
+    }
+
+    .pdot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--rose);
+      animation: dotPulse 2.2s infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 146, 106, 0.54);
+      }
+      50% {
+        box-shadow: 0 0 0 7px rgba(212, 146, 106, 0);
+      }
+    }
+
+    .hero-name {
+      font-family: var(--ff-head);
+      font-size: clamp(76px, 11vw, 128px);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      font-weight: 300;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: riseIn 0.9s 0.22s forwards;
+    }
+
+    .hero-name .given {
+      display: block;
+      color: var(--cream);
+    }
+
+    .hero-name .family {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240, 232, 220, 0.24);
+      font-style: italic;
+    }
+
+    .hero-name .family em {
+      color: var(--rose);
+      -webkit-text-stroke: 0;
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      margin-bottom: 20px;
+      font-family: var(--ff-head);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.04;
+      color: var(--cream);
+      opacity: 0;
+      animation: riseIn 0.8s 0.36s forwards;
+    }
+
+    .hero-subtitle em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .hero-bio {
+      max-width: 720px;
+      margin-bottom: 30px;
+      color: var(--text-dim);
+      font-size: 17px;
+      line-height: 1.95;
+      opacity: 0;
+      animation: riseIn 0.8s 0.5s forwards;
+    }
+
+    .hero-bio strong {
+      color: var(--cream-dim);
+      font-weight: 500;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+      opacity: 0;
+      animation: riseIn 0.8s 0.64s forwards;
+    }
+
+    .hero-pill {
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(212, 146, 106, 0.05);
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      transition: 0.25s ease;
+    }
+
+    .hero-pill:hover {
+      border-color: rgba(212, 146, 106, 0.3);
+      color: var(--rose);
+      background: rgba(212, 146, 106, 0.08);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      opacity: 0;
+      animation: riseIn 0.8s 0.78s forwards;
+    }
+
+    .btn-rose,
+    .btn-soft,
+    .btn-ghost {
+      text-decoration: none;
+      transition: 0.28s ease;
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .btn-rose {
+      padding: 13px 24px;
+      background: var(--rose);
+      color: var(--bg);
+      border-radius: 999px;
+    }
+
+    .btn-rose:hover {
+      transform: translateY(-2px);
+      background: var(--cream);
+      box-shadow: 0 10px 30px rgba(212, 146, 106, 0.22);
+    }
+
+    .btn-soft {
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--cream-dim);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .btn-soft:hover {
+      color: var(--rose);
+      border-color: rgba(212, 146, 106, 0.34);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    .btn-ghost:hover {
+      color: var(--cream);
+      border-color: var(--cream-dim);
+    }
+
+    .hero-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      animation: riseIn 0.9s 0.92s forwards;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-label {
+      margin-bottom: 6px;
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-value {
+      font-family: var(--ff-head);
+      font-size: 21px;
+      line-height: 1.14;
+      color: var(--cream);
+    }
+
+    .hero-card-value em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    /* TICKER */
+    .ticker-wrap {
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+      border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .ticker {
+      display: flex;
+      white-space: nowrap;
+      animation: tick 24s linear infinite;
+    }
+
+    .t-item {
+      flex-shrink: 0;
+      padding: 15px 30px;
+      border-right: 1px solid var(--border2);
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .t-item.lit {
+      color: var(--rose);
+    }
+
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* HIGHLIGHTS */
+    #highlights {
+      background: var(--bg2);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .highlight-card {
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: 0.28s ease;
+    }
+
+    .highlight-card:hover {
+      border-color: var(--border);
+      background: rgba(212, 146, 106, 0.03);
+      transform: translateY(-2px);
+    }
+
+    .highlight-num {
+      margin-bottom: 12px;
+      font-family: var(--ff-head);
+      font-size: 44px;
+      line-height: 1;
+      color: var(--rose);
+      font-weight: 300;
+    }
+
+    .highlight-text {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .highlight-text strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      margin-bottom: 20px;
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .about-copy strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .about-copy em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .trait-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .trait {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: 0.28s ease;
+    }
+
+    .trait:hover {
+      border-color: var(--border);
+      background: rgba(212, 146, 106, 0.03);
+    }
+
+    .trait-mark {
+      min-width: 28px;
+      color: var(--rose);
+      font-family: var(--ff-head);
+      font-size: 28px;
+      line-height: 1;
+      font-style: italic;
+    }
+
+    .trait-name {
+      margin-bottom: 4px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 22px;
+    }
+
+    .trait-desc {
+      color: var(--text-dim);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--bg2);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .skill-card {
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 34px 30px;
+      transition: 0.28s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .skill-cat {
+      margin-bottom: 10px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .skill-name {
+      margin-bottom: 14px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 24px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-item {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(212, 146, 106, 0.05);
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--bg);
+    }
+
+    .exp-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exp-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      overflow: hidden;
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: 24px;
+      transition: 0.28s ease;
+    }
+
+    .exp-row:hover {
+      border-color: var(--border);
+      background: rgba(212, 146, 106, 0.03);
+    }
+
+    .exp-aside {
+      padding: 38px 28px;
+      border-right: 1px solid var(--border2);
+    }
+
+    .exp-period {
+      margin-bottom: 6px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .exp-company {
+      color: var(--cream-dim);
+      font-family: var(--ff-head);
+      font-size: 16px;
+    }
+
+    .exp-main {
+      padding: 38px;
+    }
+
+    .exp-role {
+      margin-bottom: 18px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 30px;
+      line-height: 1.05;
+    }
+
+    .exp-copy p {
+      margin-bottom: 16px;
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .exp-copy strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--bg2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .proj-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      gap: 16px;
+      padding: 40px 36px;
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: 24px;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .proj-card:hover {
+      border-color: var(--border);
+      transform: translateY(-3px);
+    }
+
+    .proj-card::after {
+      content: attr(data-num);
+      position: absolute;
+      top: 16px;
+      right: 22px;
+      color: rgba(212, 146, 106, 0.06);
+      font-family: var(--ff-head);
+      font-size: 80px;
+      line-height: 1;
+      font-style: italic;
+      font-weight: 300;
+      transition: color 0.28s ease;
+    }
+
+    .proj-card:hover::after {
+      color: rgba(212, 146, 106, 0.12);
+    }
+
+    .proj-cat {
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .proj-title {
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 28px;
+      line-height: 1.14;
+      max-width: 90%;
+    }
+
+    .proj-desc {
+      flex: 1;
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .proj-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .proj-tag {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(212, 146, 106, 0.05);
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+    }
+
+    .proj-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .proj-link {
+      text-decoration: none;
+      color: var(--text-dim);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+      transition: 0.25s ease;
+    }
+
+    .proj-link:hover {
+      color: var(--rose);
+      border-color: rgba(212, 146, 106, 0.35);
+    }
+
+    .proj-modal-btn {
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.015);
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .proj-modal-btn:hover {
+      color: var(--rose);
+      border-color: rgba(212, 146, 106, 0.34);
+      background: rgba(212, 146, 106, 0.06);
+    }
+
+    /* CASE STUDY */
+    #case-studies {
+      background: var(--bg);
+    }
+
+    .case-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .case-card {
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: 26px;
+      padding: 34px;
+      transition: 0.28s ease;
+    }
+
+    .case-card:hover {
+      border-color: var(--border);
+      background: rgba(212, 146, 106, 0.02);
+    }
+
+    .case-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .case-meta {
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .case-title {
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 38px;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+
+    .case-summary {
+      max-width: 760px;
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .case-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .case-stat {
+      min-width: 120px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(212, 146, 106, 0.04);
+    }
+
+    .case-stat-num {
+      color: var(--rose);
+      font-family: var(--ff-head);
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .case-stat-label {
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .case-block {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      padding: 22px 22px 20px;
+    }
+
+    .case-block-title {
+      margin-bottom: 10px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 24px;
+    }
+
+    .case-block p,
+    .case-block li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .case-block ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .arch-box {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .arch-step {
+      position: relative;
+      padding: 18px 14px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(212, 146, 106, 0.04);
+      text-align: center;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 12px;
+      z-index: 2;
+    }
+
+    .arch-step-title {
+      color: var(--cream);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .arch-step-copy {
+      color: var(--text-dim);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* PROCESS */
+    #process {
+      background: var(--bg2);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .process-card {
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 34px 30px;
+      transition: 0.28s ease;
+    }
+
+    .process-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .process-num {
+      margin-bottom: 10px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .process-title {
+      margin-bottom: 10px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .process-desc {
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* EDUCATION */
+    #education {
+      background: var(--bg);
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .edu-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .edu-card {
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: 22px;
+      padding: 32px 34px;
+      transition: 0.28s ease;
+    }
+
+    .edu-card:hover {
+      border-color: var(--border);
+    }
+
+    .edu-type {
+      margin-bottom: 8px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .edu-school {
+      margin-bottom: 4px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 25px;
+    }
+
+    .edu-field {
+      margin-bottom: 12px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    .edu-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+    }
+
+    .edu-meta .gpa {
+      color: var(--rose);
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .panel-label::before {
+      content: "";
+      width: 16px;
+      height: 1px;
+      background: var(--rose);
+    }
+
+    .side-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px 28px;
+    }
+
+    .side-title {
+      margin-bottom: 8px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .side-copy {
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mini-cell {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    .mini-label {
+      margin-bottom: 5px;
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mini-value {
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .mini-value em {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg2);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-title {
+      margin-bottom: 18px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: 0.95;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-title em {
+      display: block;
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .contact-sub {
+      max-width: 480px;
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.95;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .c-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 26px;
+      text-decoration: none;
+      background: var(--bg3);
+      border: 1px solid transparent;
+      border-radius: 20px;
+      color: var(--text-dim);
+      transition: 0.28s ease;
+    }
+
+    .c-item:hover {
+      border-color: var(--border);
+      color: var(--cream);
+      background: rgba(212, 146, 106, 0.03);
+      transform: translateY(-2px);
+    }
+
+    .c-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rose);
+      font-family: var(--ff-head);
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .c-label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .c-val {
+      font-size: 14px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 10;
+      padding: 26px 56px;
+      border-top: 1px solid var(--border2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg2);
+    }
+
+    .f-l {
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+    }
+
+    .f-r {
+      color: var(--rose);
+      font-family: var(--ff-head);
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 10, 18, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-panel {
+      position: relative;
+      width: min(980px, 100%);
+      max-height: min(88vh, 920px);
+      overflow: auto;
+      background: linear-gradient(180deg, #101828 0%, #0d1220 100%);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+      padding: 30px 30px 26px;
+      z-index: 2;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .modal-meta {
+      color: var(--rose);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .modal-summary {
+      color: var(--text-dim);
+      max-width: 760px;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-size: 22px;
+      transition: 0.22s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--rose);
+      border-color: rgba(212, 146, 106, 0.35);
+      background: rgba(212, 146, 106, 0.05);
+    }
+
+    .modal-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .modal-stat {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(212, 146, 106, 0.04);
+      min-width: 122px;
+    }
+
+    .modal-stat-num {
+      color: var(--rose);
+      font-family: var(--ff-head);
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .modal-stat-label {
+      color: var(--text-soft);
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .modal-block {
+      background: rgba(255,255,255,0.01);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .modal-block.full {
+      grid-column: 1 / -1;
+    }
+
+    .modal-block-title {
+      margin-bottom: 10px;
+      color: var(--cream);
+      font-family: var(--ff-head);
+      font-size: 24px;
+    }
+
+    .modal-block p,
+    .modal-block li {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .modal-block ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .modal-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modal-tech span {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(212, 146, 106, 0.05);
+      color: var(--cream-dim);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+    }
+
+    .modal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .modal-links a {
+      text-decoration: none;
+      color: var(--text-dim);
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+    }
+
+    .modal-links a:hover {
+      color: var(--rose);
+      border-color: rgba(212, 146, 106, 0.35);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1120px) {
+      .hero-shell,
+      .about-grid,
+      .edu-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-aside {
+        max-width: 700px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .highlight-grid,
+      .skills-grid,
+      .projects-grid,
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .case-grid,
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-box {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .arch-step:nth-child(3)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 880px) {
+      nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      #hero {
+        padding: 108px 22px 60px;
+        min-height: auto;
+      }
+
+      .wrap {
+        padding: 72px 22px;
+      }
+
+      .hero-shell {
+        gap: 26px;
+      }
+
+      .hero-bio {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .hero-cta {
+        gap: 12px;
+      }
+
+      .hero-aside {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .highlight-grid,
+      .skills-grid,
+      .projects-grid,
+      .process-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-row {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-aside {
+        border-right: none;
+        border-bottom: 1px solid var(--border2);
+        padding: 24px 24px 18px;
+      }
+
+      .exp-main {
+        padding: 24px;
+      }
+
+      .proj-card {
+        min-height: auto;
+        padding: 30px 24px;
+      }
+
+      .proj-title {
+        max-width: 100%;
+        font-size: 24px;
+      }
+
+      .case-card {
+        padding: 26px 22px;
+      }
+
+      .case-head {
+        align-items: flex-start;
+      }
+
+      .case-title {
+        font-size: 28px;
+      }
+
+      .arch-box {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-step::after {
+        display: none;
+      }
+
+      .contact-wrap {
+        gap: 32px;
+      }
+
+      .modal {
+        padding: 14px;
+      }
+
+      .modal-panel {
+        padding: 22px 18px 20px;
+        border-radius: 22px;
+      }
+
+      .modal-top {
+        align-items: flex-start;
+      }
+
+      .modal-stats {
+        gap: 10px;
+      }
+
+      footer {
+        padding: 20px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .about-copy p,
+      .exp-copy p,
+      .proj-desc,
+      .case-block p,
+      .case-block li,
+      .modal-block p,
+      .modal-block li,
+      .contact-sub,
+      .section-copy {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-name {
+        font-size: clamp(58px, 18vw, 88px);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(24px, 8vw, 34px);
+      }
+
+      .hero-cta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+
+      .btn-rose,
+      .btn-soft,
+      .btn-ghost {
+        text-align: center;
+      }
+
+      .btn-ghost {
+        padding: 12px 10px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+      }
+
+      .hero-aside {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight-card,
+      .skill-card {
+        padding: 26px 22px;
+      }
+
+      .case-results,
+      .modal-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal-top {
+        flex-direction: column;
+      }
+
+      .modal-close {
+        align-self: flex-end;
+      }
+
+      .contact-title {
+        font-size: clamp(42px, 14vw, 64px);
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Skip link for accessibility -->
-  <a class="visually-hidden" href="#introduction">Skip to content</a>
+  <canvas id="stars"></canvas>
 
-  <!-- Hamburger Toggle -->
-  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
+  <nav>
+    <a href="#hero" class="nav-mark">Yuni <span>Wu</span></a>
 
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar" aria-hidden="true">
-    <nav class="sidebar-nav" aria-label="Site">
-      <a href="#introduction">Introduction</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Work Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#awards">Awards</a>
-    </nav>
-  </aside>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-  <!-- Particles background -->
-  <div id="particles-js"></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+    </button>
+  </nav>
 
-  <!-- ===== Hero Header ===== -->
-  <header class="hero">
-    <div class="glow"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#case-studies">Case Studies</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-    <div class="card">
-      <img src="./img/me.JPEG" alt="Portrait of Yuni Wu" class="avatar"/>
-      <h1 class="name">Yuni Wu</h1>
+  <section id="hero">
+    <div class="hero-shell">
+      <div class="hero-main">
+        <div class="hero-eyebrow">
+          <span class="pdot"></span>
+          <span id="tw"></span>
+        </div>
 
-      <p class="roles">
-        <span class="emoji" aria-hidden="true">🚀</span>
-        <span id="typewriter" aria-live="polite"></span>
-        <span class="caret" aria-hidden="true"></span>
+        <h1 class="hero-name">
+          <span class="given">Yuni</span>
+          <span class="family"><em>Wu</em></span>
+        </h1>
+
+        <div class="hero-subtitle">Engineering AI from <em>model to production.</em></div>
+
+        <p class="hero-bio">
+          I build end-to-end AI systems across <strong>computer vision</strong>,
+          <strong>LLM applications</strong>, and <strong>cloud infrastructure</strong> —
+          from fine-grained medical image classifiers to real-time recommendation
+          engines and deployable ML services on GCP.
+        </p>
+
+        <div class="hero-pills">
+          <span class="hero-pill">ML Engineer</span>
+          <span class="hero-pill">Computer Vision</span>
+          <span class="hero-pill">LLM Applications</span>
+          <span class="hero-pill">GCP / Cloud Run</span>
+          <span class="hero-pill">FastAPI / Docker</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn-rose">View Selected Work</a>
+          <a href="resume.pdf" class="btn-soft" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a href="https://github.com/yuni-wyx" class="btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/wih" class="btn-ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="hero-aside">
+        <div class="hero-card">
+          <div class="hero-card-label">Education</div>
+          <div class="hero-card-value">MS Data Science <em>@ CU Boulder</em></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Graduation</div>
+          <div class="hero-card-value">May 2026</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Focus</div>
+          <div class="hero-card-value">ML Systems · Applied AI · Cloud Infrastructure</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <section id="highlights">
+    <div class="wrap">
+      <div class="s-label reveal">Selected Highlights</div>
+      <h2 class="s-title reveal">Proof points that <em>matter</em></h2>
+
+      <div class="highlight-grid reveal">
+        <div class="highlight-card">
+          <div class="highlight-num">50K+</div>
+          <div class="highlight-text">
+            Trained fine-grained medical image models on
+            <strong>50K+ images across 22 disease classes</strong>.
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">93%</div>
+          <div class="highlight-text">
+            Reached <strong>93% accuracy</strong> in medical image classification
+            with strong minority-class performance.
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">30%</div>
+          <div class="highlight-text">
+            Improved <strong>minority-class F1 by 30%</strong> through hierarchical
+            classification and targeted oversampling.
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">800+</div>
+          <div class="highlight-text">
+            Built validation and anomaly detection workflows supporting
+            <strong>800+ production scenarios</strong> at Shopee.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="s-label reveal">About</div>
+      <h2 class="s-title reveal">I like building <em>systems</em>, not just models.</h2>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>
+            My background sits at the intersection of <strong>machine learning</strong>,
+            <strong>software engineering</strong>, and <strong>data systems</strong>.
+            I started with a strong foundation in data science, gained production
+            experience building validation and monitoring workflows at Shopee,
+            and later moved deeper into applied ML through medical vision,
+            LLM-powered applications, and cloud deployment.
+          </p>
+          <p>
+            At <strong>CU Boulder</strong>, I’ve continued expanding that stack
+            through projects in computer vision, language systems, and robotics.
+            Across all of them, I’m most energized by work that connects
+            <em>modeling with real-world constraints</em>:
+            latency, reliability, evaluation, and end-to-end usability.
+          </p>
+          <p>
+            I’m especially interested in roles where I can help design, build,
+            and ship AI systems that are both <strong>technically rigorous</strong>
+            and <strong>practically useful</strong>.
+          </p>
+        </div>
+
+        <div class="trait-list reveal">
+          <div class="trait">
+            <div class="trait-mark">∞</div>
+            <div>
+              <div class="trait-name">End-to-End Builder</div>
+              <div class="trait-desc">
+                Comfortable across modeling, backend APIs, deployment, and
+                evaluation workflows.
+              </div>
+            </div>
+          </div>
+          <div class="trait">
+            <div class="trait-mark">◈</div>
+            <div>
+              <div class="trait-name">Systems-Oriented</div>
+              <div class="trait-desc">
+                I think in pipelines, interfaces, and tradeoffs — not isolated notebooks.
+              </div>
+            </div>
+          </div>
+          <div class="trait">
+            <div class="trait-mark">⟡</div>
+            <div>
+              <div class="trait-name">Metrics-Driven</div>
+              <div class="trait-desc">
+                I care about measurable improvements in accuracy, latency,
+                reliability, and real user outcomes.
+              </div>
+            </div>
+          </div>
+          <div class="trait">
+            <div class="trait-mark">≈</div>
+            <div>
+              <div class="trait-name">Product-Aware</div>
+              <div class="trait-desc">
+                I like AI that survives outside the notebook and creates value in practice.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="s-label reveal">Core Technical Stack</div>
+      <h2 class="s-title reveal">Tools of the <em>work</em></h2>
+
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-cat">Languages</div>
+          <div class="skill-name">Programming</div>
+          <div class="skill-items">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">Go</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-cat">Machine Learning</div>
+          <div class="skill-name">Modeling</div>
+          <div class="skill-items">
+            <span class="skill-item">PyTorch</span>
+            <span class="skill-item">CNNs</span>
+            <span class="skill-item">ResNet</span>
+            <span class="skill-item">Transformers</span>
+            <span class="skill-item">Fine-grained Classification</span>
+            <span class="skill-item">Class Imbalance Handling</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-cat">LLM Applications</div>
+          <div class="skill-name">Language Systems</div>
+          <div class="skill-items">
+            <span class="skill-item">RAG</span>
+            <span class="skill-item">Agent Workflows</span>
+            <span class="skill-item">Prompt Design</span>
+            <span class="skill-item">Recommendation Systems</span>
+            <span class="skill-item">Retrieval Pipelines</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-cat">Cloud & Backend</div>
+          <div class="skill-name">Infrastructure</div>
+          <div class="skill-items">
+            <span class="skill-item">GCP</span>
+            <span class="skill-item">Cloud Run</span>
+            <span class="skill-item">Cloud Storage</span>
+            <span class="skill-item">Pub/Sub</span>
+            <span class="skill-item">BigQuery</span>
+            <span class="skill-item">FastAPI</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">Cloud Build</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-cat">Data & Systems</div>
+          <div class="skill-name">Reliability</div>
+          <div class="skill-items">
+            <span class="skill-item">ETL</span>
+            <span class="skill-item">Data Validation</span>
+            <span class="skill-item">Monitoring</span>
+            <span class="skill-item">Anomaly Detection</span>
+            <span class="skill-item">Benchmarking</span>
+            <span class="skill-item">Experiment Evaluation</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-cat">Robotics / Applied Research</div>
+          <div class="skill-name">Perception to Action</div>
+          <div class="skill-items">
+            <span class="skill-item">ROS</span>
+            <span class="skill-item">Behavior Cloning</span>
+            <span class="skill-item">Residual Analysis</span>
+            <span class="skill-item">Policy Evaluation</span>
+            <span class="skill-item">Perception Pipelines</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="s-label reveal">Work Experience</div>
+      <h2 class="s-title reveal">Where I’ve <em>shipped</em></h2>
+
+      <div class="exp-timeline">
+        <div class="exp-row reveal">
+          <div class="exp-aside">
+            <div class="exp-period">May 2025 – Aug 2025</div>
+            <div class="exp-company">MyEdMaster LLC</div>
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">Machine Learning Engineer Intern</div>
+            <div class="exp-copy">
+              <p>
+                Built and evaluated fine-grained medical image classification systems
+                for nail disease detection using <strong>PyTorch</strong> and
+                <strong>ResNet-based architectures</strong>. Trained models on
+                <strong>50K+ images across 22 disease categories</strong>, reaching
+                <strong>93% accuracy</strong> while improving minority-class F1 by
+                <strong>30%</strong> through hierarchical classification and targeted
+                oversampling.
+              </p>
+              <p>
+                Led architecture comparison across <strong>ResNet18 and ResNet50</strong>,
+                selecting a lighter model that delivered <strong>5× faster inference</strong>
+                without sacrificing clinically important precision. Extended the work into
+                deployment-oriented workflows using <strong>Docker</strong>,
+                <strong>GCP Cloud Run</strong>, and cloud storage pipelines for scalable inference.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-row reveal">
+          <div class="exp-aside">
+            <div class="exp-period">Jun 2021 – Aug 2022</div>
+            <div class="exp-company">Shopee Co. Ltd.</div>
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">Software Engineer</div>
+            <div class="exp-copy">
+              <p>
+                Developed production-facing data validation and anomaly detection workflows
+                supporting <strong>800+ operational scenarios</strong>. Built Python-based
+                monitoring pipelines that reduced manual inspection effort by
+                <strong>80%</strong> and shortened reporting turnaround by <strong>78%</strong>.
+              </p>
+              <p>
+                Improved data retrieval and processing efficiency in <strong>GCP-based workflows</strong>,
+                reducing latency and making downstream ML and analytics processes more reliable.
+                This role strengthened my foundation in <strong>production systems</strong>,
+                <strong>observability</strong>, and engineering for scale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="s-label reveal">Selected Projects</div>
+      <h2 class="s-title reveal">Things I’ve <em>built</em></h2>
+      <p class="section-copy reveal">
+        These are the projects that best represent how I think: define the right problem,
+        make measurable technical decisions, and build for deployment constraints instead
+        of just getting a model to run once.
       </p>
 
-      <p class="tagline">Exploring data to unlock delightful, real-world AI.</p>
+      <div class="projects-grid reveal">
+        <article class="proj-card" data-num="I">
+          <div class="proj-cat">Computer Vision · Cloud Deployment</div>
+          <div class="proj-title">NailAI — Fine-Grained Medical Vision System</div>
+          <div class="proj-desc">
+            Built a fine-grained nail disease classification system covering 22 categories
+            using ResNet-based models, Grad-CAM visualization, and cloud-native inference
+            workflows with a strong focus on both predictive performance and deployment readiness.
+          </div>
+          <div class="proj-highlights">
+            <span class="proj-tag">50K+ Images</span>
+            <span class="proj-tag">93% Accuracy</span>
+            <span class="proj-tag">Grad-CAM</span>
+            <span class="proj-tag">Cloud Run</span>
+            <span class="proj-tag">Docker</span>
+          </div>
+          <div class="proj-actions">
+            <button class="proj-modal-btn" data-modal="modal-nailai">View Details</button>
+            <a href="https://nailai-backend-299381123286.us-central1.run.app/" class="proj-link">DEMO</a>
+            <a href="#case-studies" class="proj-link">Case Study</a>
+          </div>
+        </article>
 
-      <ul class="skills" aria-label="Skills">
-        <li>Python</li>
-        <li>LLMs</li>
-        <li>Google Cloud Platform</li>
-        <li>SQL</li>
-        <li>R</li> 
-      </ul>
+        <article class="proj-card" data-num="II">
+          <div class="proj-cat">LLM Applications · Backend Systems</div>
+          <div class="proj-title">EmotionFlow — LLM-Powered Recommendation Engine</div>
+          <div class="proj-desc">
+            Built a real-time emotional recommendation system using conversational context,
+            prompt logic, and a cloud-hosted backend pipeline for personalized music suggestions.
+          </div>
+          <div class="proj-highlights">
+            <span class="proj-tag">FastAPI</span>
+            <span class="proj-tag">Cloud Run</span>
+            <span class="proj-tag">Context-Aware Dialogue</span>
+            <span class="proj-tag">LLM APIs</span>
+          </div>
+          <div class="proj-actions">
+            <button class="proj-modal-btn" data-modal="modal-emotionflow">View Details</button>
+            <a href="https://emotionflow-40672525442.us-central1.run.app/" class="proj-link">DEMO</a>
+            <a href="#case-studies" class="proj-link">Case Study</a>
+          </div>
+        </article>
 
-      <nav class="links" aria-label="Social links">
-        <a href="https://github.com/yuni-wyx" target="_blank" rel="noopener" class="gh" aria-label="GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://linkedin.com/in/wih" target="_blank" rel="noopener" class="li" aria-label="LinkedIn">
-          <i class="fab fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="mailto:ihwu8559@colorado.edu" class="mail" aria-label="Email">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-        </a>
-        <a href="./files/Yuni_Wu_Resume.pdf" target="_blank" rel="noopener" class="resume" aria-label="Resume" title="Open my resume (PDF)">
-          <i class="fas fa-file-alt" aria-hidden="true"></i>
-        </a>
-      </nav>
-    </div>
-
-    <a href="#introduction" class="scroll-down" aria-label="Scroll to Introduction">
-      <span></span>
-    </a>
-  </header>
-
-  <!-- ===== Introduction ===== -->
-  <section id="introduction" class="section section-space">
-    <h2 class="sec-title">Introduction</h2>
-    <div class="intro-card">
-      <div class="intro-grid">
-        <p class="intro-line">
-          I’m a <span class="hl">Machine Learning Engineer</span> and <span class="hl">Data Scientist</span> passionate about
-          building <span class="hl">intelligent, human-centered systems</span> that connect research with real-world impact.
-        </p>
-        <p class="intro-line">
-          I created <span class="hl">EmotionFlow</span> — a multimodal AI platform using LLMs, emotion recognition,
-          and reinforcement learning for empathetic dialogue and real-time music recommendations.
-        </p>
-        <p class="intro-line">
-          Internship: developed a <span class="hl">fine-grained nail disease classifier</span> using ResNet18 and MobileNetV2,
-          applied <span class="hl">Grad-CAM</span> interpretability, and improved minority-class F1 by <span class="hl">30%</span>.
-        </p>
-        <p class="intro-line">
-          At <span class="hl">Shopee</span>, automated large-scale data pipelines and analytics workflows,
-          improving evaluation efficiency by <span class="hl">80%</span> and driving <span class="hl">25%</span> higher engagement
-          through data-driven insights.
-        </p>
-        <p class="intro-line">
-          I’m seeking opportunities to apply <span class="hl">machine learning, data mining, and cloud deployment</span>
-          to build scalable, trustworthy AI systems — on <span class="hl">GCP</span> and beyond.
-        </p>
+        <article class="proj-card" data-num="III">
+          <div class="proj-cat">Robotics · Behavior Cloning</div>
+          <div class="proj-title">Vision-Based Imitation Learning for Go1 Navigation</div>
+          <div class="proj-desc">
+            Developed a vision-based behavior cloning pipeline for quadruped navigation
+            using a ResNet encoder, action prediction, and residual-based diagnostics
+            across control dimensions.
+          </div>
+          <div class="proj-highlights">
+            <span class="proj-tag">PyTorch</span>
+            <span class="proj-tag">ResNet</span>
+            <span class="proj-tag">ROS</span>
+            <span class="proj-tag">Residual Diagnostics</span>
+          </div>
+          <div class="proj-actions">
+            <button class="proj-modal-btn" data-modal="modal-go1">View Details</button>
+            <a href="https://yuni-wyx.github.io/go1-autonomous-navigation" class="proj-link">DEMO</a>
+            <a href="https://github.com/yuni-wyx/go1-autonomous-navigation" class="proj-link">GITHUB</a>
+            <a href="#case-studies" class="proj-link">Case Study</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Skills ===== -->
-  <section id="skills" class="section">
-    <h3 class="skills-group">Skills</h3>
-    <div class="skills-container">
-      <div class="skill-card">
-        <div class="card-inner">
-          <div class="card-front"><h3>Programming</h3></div>
-          <div class="card-back">
-            <p>Python, R, SQL, Go</p>
-            <p>HTML, CSS, JavaScript, SAS</p>
+  <section id="case-studies">
+    <div class="wrap">
+      <div class="s-label reveal">Case Studies</div>
+      <h2 class="s-title reveal">How I turn ideas into <em>working systems</em></h2>
+      <p class="section-copy reveal">
+        These deeper write-ups are meant to show not just what I built, but how I made decisions:
+        what the constraints were, what tradeoffs mattered, and what changed because of those decisions.
+      </p>
+
+      <div class="case-stack">
+        <article class="case-card reveal">
+          <div class="case-head">
+            <div>
+              <div class="case-meta">Featured Case Study · Computer Vision · Applied ML</div>
+              <div class="case-title">NailAI — Fine-Grained Medical Vision System</div>
+              <p class="case-summary">
+                A fine-grained nail disease classification system designed to balance predictive
+                accuracy, minority-class sensitivity, explainability, and deployable inference.
+              </p>
+            </div>
+
+            <div class="case-results">
+              <div class="case-stat">
+                <div class="case-stat-num">93%</div>
+                <div class="case-stat-label">Accuracy</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">30%</div>
+                <div class="case-stat-label">Minority F1 Lift</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">5×</div>
+                <div class="case-stat-label">Faster Inference</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-grid">
+            <div class="case-block">
+              <div class="case-block-title">Context</div>
+              <p>
+                Nail disease classification is difficult because classes are visually similar,
+                long-tail categories matter clinically, and model quality cannot be judged by
+                accuracy alone. The goal was to build a model that performed well while staying
+                practical enough to deploy.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Challenge</div>
+              <p>
+                The hardest part was balancing three things at once: fine-grained multi-class
+                discrimination, minority-class sensitivity, and inference efficiency suitable
+                for real-world serving.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Approach</div>
+              <ul>
+                <li>Compared ResNet18 and ResNet50 under accuracy and latency tradeoffs.</li>
+                <li>Used targeted oversampling and hierarchical classification to improve long-tail behavior.</li>
+                <li>Added Grad-CAM visualization to support explainability and error analysis.</li>
+                <li>Containerized inference for cloud deployment with Docker and Cloud Run.</li>
+              </ul>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Why the decisions mattered</div>
+              <ul>
+                <li>ResNet18 was selected because it preserved performance while dramatically reducing inference time.</li>
+                <li>Hierarchical structure improved clinically important class distinctions beyond flat classification alone.</li>
+                <li>Explainability was useful both for debugging and for communicating model behavior more responsibly.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="arch-box">
+            <div class="arch-step">
+              <div class="arch-step-title">Data</div>
+              <div class="arch-step-copy">Fine-grained labeled nail images across 22 categories</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Training</div>
+              <div class="arch-step-copy">ResNet experiments, class balancing, hierarchical setup</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Evaluation</div>
+              <div class="arch-step-copy">Accuracy, F1, minority-class behavior, error analysis</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Explainability</div>
+              <div class="arch-step-copy">Grad-CAM for interpretation and debugging</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Deployment</div>
+              <div class="arch-step-copy">Dockerized inference service on GCP Cloud Run</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-head">
+            <div>
+              <div class="case-meta">Featured Case Study · LLM Applications · Backend Systems</div>
+              <div class="case-title">EmotionFlow — LLM-Powered Recommendation Engine</div>
+              <p class="case-summary">
+                A conversational recommendation system that turns emotional context into personalized
+                music suggestions through a real-time backend pipeline.
+              </p>
+            </div>
+
+            <div class="case-results">
+              <div class="case-stat">
+                <div class="case-stat-num">Real-Time</div>
+                <div class="case-stat-label">Response Flow</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">Multi-Step</div>
+                <div class="case-stat-label">Reasoning Pipeline</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">Cloud</div>
+                <div class="case-stat-label">Deployment Ready</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-grid">
+            <div class="case-block">
+              <div class="case-block-title">Context</div>
+              <p>
+                Most recommendation systems optimize around behavior history. EmotionFlow focused
+                instead on live conversational signals, mood cues, and contextual interpretation.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Challenge</div>
+              <p>
+                The main challenge was building a system that could feel responsive and coherent
+                in real time while still keeping the orchestration logic understandable and testable.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Approach</div>
+              <ul>
+                <li>Designed a backend flow that extracts emotional cues from conversation.</li>
+                <li>Structured prompts to keep outputs useful, relevant, and less generic.</li>
+                <li>Wrapped the recommendation logic inside a FastAPI service for deployment.</li>
+                <li>Organized the system for cloud hosting on GCP Cloud Run.</li>
+              </ul>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Takeaway</div>
+              <ul>
+                <li>This project strengthened my understanding of LLM application design beyond prompting alone.</li>
+                <li>It also reinforced how important backend structure and evaluation loops are in user-facing AI systems.</li>
+                <li>The result was a more complete applied AI product, not just a demo script.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-head">
+            <div>
+              <div class="case-meta">Featured Case Study · Robotics · Behavior Cloning</div>
+              <div class="case-title">Go1 Autonomous Navigation — Vision-Based Imitation Learning</div>
+              <p class="case-summary">
+                A vision-based imitation learning system for quadruped navigation, designed to map image observations
+                to control actions while staying measurable through residual diagnostics and trajectory-level evaluation.
+              </p>
+            </div>
+
+            <div class="case-results">
+              <div class="case-stat">
+                <div class="case-stat-num">BC</div>
+                <div class="case-stat-label">Behavior Cloning</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">ROS</div>
+                <div class="case-stat-label">Robot Stack</div>
+              </div>
+              <div class="case-stat">
+                <div class="case-stat-num">Vision</div>
+                <div class="case-stat-label">Image-Based Policy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-grid">
+            <div class="case-block">
+              <div class="case-block-title">Context</div>
+              <p>
+                This project explored how a quadruped robot could learn navigation behavior directly from visual input.
+                Instead of hand-coding control logic, the goal was to train a policy that predicts motion commands from images.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Challenge</div>
+              <p>
+                The main challenge was not just training a model, but understanding whether the predicted actions were stable,
+                interpretable, and useful across trajectories. In robotics, small errors can compound quickly, so evaluation needed
+                to go beyond a single aggregate metric.
+              </p>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Approach</div>
+              <ul>
+                <li>Used a ResNet-based encoder to process image observations.</li>
+                <li>Trained a behavior cloning policy to predict robot control commands.</li>
+                <li>Evaluated action quality with velocity-wise residual analysis.</li>
+                <li>Analyzed prediction behavior at both sample level and trajectory level.</li>
+              </ul>
+            </div>
+
+            <div class="case-block">
+              <div class="case-block-title">Why the decisions mattered</div>
+              <ul>
+                <li>Image-based encoding kept the perception-to-action pipeline compact and practical.</li>
+                <li>Residual diagnostics made it easier to identify where the policy drifted or underperformed.</li>
+                <li>Trajectory-level analysis gave a more robotics-relevant view than aggregate loss alone.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="arch-box">
+            <div class="arch-step">
+              <div class="arch-step-title">Data</div>
+              <div class="arch-step-copy">Collected image-action pairs from robot operation</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Encoder</div>
+              <div class="arch-step-copy">ResNet-based visual feature extraction</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Policy</div>
+              <div class="arch-step-copy">Behavior cloning model predicts control commands</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Evaluation</div>
+              <div class="arch-step-copy">Residual diagnostics and action-dimension analysis</div>
+            </div>
+            <div class="arch-step">
+              <div class="arch-step-title">Deployment</div>
+              <div class="arch-step-copy">ROS-based integration for quadruped navigation workflow</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="s-label reveal">How I Work</div>
+      <h2 class="s-title reveal">A practical approach to <em>building AI</em></h2>
+
+      <div class="process-grid reveal">
+        <div class="process-card">
+          <div class="process-num">01</div>
+          <div class="process-title">Define the right problem</div>
+          <div class="process-desc">
+            I start by clarifying the real objective, constraints, tradeoffs,
+            and success metrics before choosing models or tools.
           </div>
         </div>
-      </div>
-      <div class="skill-card">
-        <div class="card-inner">
-          <div class="card-front"><h3>Machine Learning &amp; AI</h3></div>
-          <div class="card-back">
-            <p>PyTorch, TensorFlow, Hugging Face</p>
-            <p>LangChain, LangGraph, Scikit-learn</p>
+
+        <div class="process-card">
+          <div class="process-num">02</div>
+          <div class="process-title">Build for measurement</div>
+          <div class="process-desc">
+            I care about evaluation, error analysis, reproducibility, and benchmark-driven
+            decisions — not just getting outputs that look good once.
           </div>
         </div>
-      </div>
-      <div class="skill-card">
-        <div class="card-inner">
-          <div class="card-front"><h3>Data Tools &amp; Platforms</h3></div>
-          <div class="card-back">
-            <p>GCP, Azure, Docker, Flask</p>
-            <p>Tableau, Excel, Git, Jupyter</p>
-          </div>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="card-inner">
-          <div class="card-front"><h3>Specializations</h3></div>
-          <div class="card-back">
-            <p>Statistical Modeling, Predictive Analytics</p>
-            <p>Feature Engineering, Data Visualization</p>
+
+        <div class="process-card">
+          <div class="process-num">03</div>
+          <div class="process-title">Ship with constraints in mind</div>
+          <div class="process-desc">
+            Latency, reliability, deployment, and usability matter. I like systems that
+            can survive outside a notebook and support real users.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Timeline ===== -->
-  <div class="timeline">
-    <h3 class="timeline-group" id="work">Work Experience</h3>
-    <div class="event">      
-      <p><strong>Machine Learning Engineer Intern</strong></p>
-      <p>MyEdMaster</p>
-      <p>2025</p>
-      <div class="event-details">
-        <ul>
-          <li>Implemented ResNet-18 on 50K+ nail images, achieving 93% accuracy across 22 fine-grained categories.</li>
-          <li>Raised minority-class F1 by 30% via hierarchical classification and data rebalancing.</li>
-          <li>Deployed FastAPI + JS on GCP Cloud Run, delivering &lt;1s latency for 100+ users.</li>
-        </ul>
-        <a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener">NailAI Detection</a>
+  <section id="education">
+    <div class="wrap">
+      <div class="s-label reveal">Education</div>
+      <h2 class="s-title reveal">Where I <em>learned</em></h2>
+
+      <div class="edu-grid">
+        <div class="edu-cards reveal">
+          <div class="edu-card">
+            <div class="edu-type">M.S. Data Science</div>
+            <div class="edu-school">University of Colorado Boulder</div>
+            <div class="edu-field">Master of Science in Data Science</div>
+            <div class="edu-meta">
+              <span>Aug 2024 – May 2026</span>
+              <span class="gpa">GPA 3.81 / 4.0</span>
+            </div>
+          </div>
+
+          <div class="edu-card">
+            <div class="edu-type">Bachelor’s in Data Science</div>
+            <div class="edu-school">Soochow University</div>
+            <div class="edu-field">Bachelor’s in Data Science · Taipei, Taiwan</div>
+            <div class="edu-meta">
+              <span>Sept 2017 – Jun 2021</span>
+              <span class="gpa">GPA 3.7 / 4.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-panel reveal">
+          <div class="panel-label">Recognition</div>
+          <div class="side-box">
+            <div class="side-title">2nd Place — Data Science Hackathon</div>
+            <div class="side-copy">
+              Built a clustering-based job recommendation system that improved
+              match precision across diverse user profiles.
+            </div>
+          </div>
+
+          <div class="panel-label">Snapshot</div>
+          <div class="mini-grid">
+            <div class="mini-cell">
+              <div class="mini-label">Current Focus</div>
+              <div class="mini-value"><em>ML Systems</em></div>
+            </div>
+            <div class="mini-cell">
+              <div class="mini-label">Work Style</div>
+              <div class="mini-value">Hands-on Builder</div>
+            </div>
+            <div class="mini-cell">
+              <div class="mini-label">Interested In</div>
+              <div class="mini-value">Applied AI</div>
+            </div>
+            <div class="mini-cell">
+              <div class="mini-label">Open To</div>
+              <div class="mini-value">2026 Roles</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="event">      
-      <p><strong>Research AI Engineer Intern</strong></p>
-      <p>Kashmir World Foundation</p>
-      <p>2025</p>
-      <div class="event-details">
-        <ul>
-          <li>Analyzed 108K+ bird clips with <span class="hl">VQ-VAE tokenization</span> to study species and environment context.</li>
-          <li>Built <span class="hl">UMAP</span> visualizations and clustering to interpret token embeddings and human-activity links.</li>
-          <li>Developed representation-learning and cross-analysis workflows with ecological metadata.</li>
-        </ul>
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-wrap reveal">
+        <div>
+          <div class="s-label">Get In Touch</div>
+          <h2 class="contact-title">Let’s build something <em>impactful.</em></h2>
+          <p class="contact-sub">
+            I’m currently seeking 2026 opportunities in ML engineering, applied AI,
+            and data systems. If you’re hiring for roles that involve building,
+            evaluating, or deploying AI products at scale, I’d love to connect.
+          </p>
+        </div>
+
+        <div class="contact-items">
+          <a href="mailto:ihwu8559@colorado.edu" class="c-item">
+            <div class="c-icon">@</div>
+            <div>
+              <span class="c-label">Email</span>
+              <span class="c-val">ihwu8559@colorado.edu</span>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/wih/" class="c-item" target="_blank" rel="noopener noreferrer">
+            <div class="c-icon" style="font-family: var(--ff-mono); font-style: normal; font-size: 12px;">in</div>
+            <div>
+              <span class="c-label">LinkedIn</span>
+              <span class="c-val">linkedin.com/in/wih</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/yuni-wyx" class="c-item" target="_blank" rel="noopener noreferrer">
+            <div class="c-icon" style="font-family: var(--ff-mono); font-style: normal; font-size: 12px;">gh</div>
+            <div>
+              <span class="c-label">GitHub</span>
+              <span class="c-val">github.com/yuni-wyx</span>
+            </div>
+          </a>
+
+          <a href="./files/resume.pdf" class="c-item" target="_blank" rel="noopener noreferrer">
+            <div class="c-icon">↗</div>
+            <div>
+              <span class="c-label">Resume</span>
+              <span class="c-val">View PDF Resume</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="event">     
-      <p><strong>Course Facilitator</strong></p>
-      <p>University of Colorado Boulder</p>
-      <p>2024 – Present</p>
-      <div class="event-details">
-        <ul>
-          <li>Supported grad courses in <span class="hl">Statistics</span>, <span class="hl">ML</span>, and <span class="hl">Big Data Systems</span> for 100+ students.</li>
-          <li>Managed Salesforce case tracking; resolved GCP, Hadoop, Spark, and Python environment issues.</li>
-          <li>Created tutorials and debugging guides, improving lab completion and satisfaction.</li>
-        </ul>
+  <footer>
+    <span class="f-l">© 2026 Yuni Wu</span>
+    <span class="f-r">Built with intention, measured by impact.</span>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal" id="modal-nailai" aria-hidden="true" role="dialog" aria-labelledby="modal-nailai-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <div class="modal-meta">Computer Vision · Applied ML · Cloud Deployment</div>
+          <h3 class="modal-title" id="modal-nailai-title">NailAI — Fine-Grained Medical Vision System</h3>
+          <p class="modal-summary">
+            A fine-grained medical image classification system built to balance predictive quality,
+            long-tail sensitivity, explainability, and real deployment constraints.
+          </p>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
       </div>
-    </div>
 
-    <div class="event">    
-      <p><strong>Software Engineer</strong></p>
-      <p>Shopee</p>
-      <p>2020–2021</p>
-      <div class="event-details">
-        <ul>
-          <li>Automated 800+ Python/SQL test cases, reducing manual work by 80% and accelerating releases.</li>
-          <li>Built GCP + API tools for test DB access, cutting data retrieval time by 15%.</li>
-          <li>Delivered real-time regression dashboards, improving reporting efficiency by 85%.</li>
-          <li>Engineered Go-based API testing, reducing release errors by 95%.</li>
-        </ul>
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-num">93%</div>
+          <div class="modal-stat-label">Accuracy</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">30%</div>
+          <div class="modal-stat-label">Minority F1 Lift</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">5×</div>
+          <div class="modal-stat-label">Faster Inference</div>
+        </div>
       </div>
-    </div>
 
-    <div class="event">     
-      <p><strong>Data Analyst Intern</strong></p>
-      <p>Compal</p>
-      <p>2019–2020</p>
-      <div class="event-details">
-        <ul>
-            <li>Analyzed workforce allocation for 8,000+ employees using Python and Power BI, identifying inefficiencies.</li>
-            <li>Built optimization models in Python/Excel, improving workforce efficiency by 80% and reducing costs.</li>
-        </ul>
-      </div>
-    </div>
+      <div class="modal-grid">
+        <div class="modal-block">
+          <div class="modal-block-title">Problem</div>
+          <p>
+            The system had to classify 22 visually similar nail disease categories while handling
+            class imbalance and keeping inference fast enough for cloud serving.
+          </p>
+        </div>
 
-    <h3 class="timeline-group" id="projects">Projects</h3>
+        <div class="modal-block">
+          <div class="modal-block-title">What I Built</div>
+          <p>
+            I trained and evaluated ResNet-based classifiers, improved minority-class behavior
+            with hierarchical classification and oversampling, added Grad-CAM explainability,
+            and prepared the service for deployment with Docker and Cloud Run.
+          </p>
+        </div>
 
-    <div class="event">    
-      <p><strong>EmotionFlow — Real-Time Recommendation</strong></p>
-      <p>2025</p>
-      <div class="event-details">
-        <ul>
-          <li>LLM-driven recommender adapting dialogue/visuals/music; 82% user satisfaction.</li>
-          <li>Applied RLHF + personalization, boosting acceptance rate by 57%.</li>
-          <li>Deployed on GCP Cloud Run for real-world testing.</li>
-        </ul>
-        <a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener">EmotionFlow</a>
-      </div>
-    </div>
+        <div class="modal-block">
+          <div class="modal-block-title">Technical Decisions</div>
+          <ul>
+            <li>Compared ResNet18 vs ResNet50 using both accuracy and latency.</li>
+            <li>Selected the lighter architecture because it preserved quality and reduced serving cost.</li>
+            <li>Used class balancing and hierarchical logic to improve clinically sensitive classes.</li>
+            <li>Included explainability for debugging and more responsible interpretation.</li>
+          </ul>
+        </div>
 
-    <div class="event">  
-      <p><strong>NexCare — AI Healthcare Agent</strong></p>
-      <p>2024</p>
-      <div class="event-details">
-        <ul>
-          <li>Deployed ReAct-based assistant; reduced hallucinations by 25%, improved accuracy by 30%.</li>
-          <li>Integrated RAG + prompt engineering; cut latency by 30% and improved engagement.</li>
-          <li>Fine-tuned LLM (PyTorch) for nursing Q&amp;A, +55% accuracy.</li>
-        </ul>
-      </div>
-    </div>
+        <div class="modal-block">
+          <div class="modal-block-title">Outcome</div>
+          <ul>
+            <li>Reached 93% accuracy on a 22-class fine-grained problem.</li>
+            <li>Improved minority-class F1 by 30%.</li>
+            <li>Reduced inference time by 5× compared with the heavier baseline.</li>
+            <li>Produced a deployment-ready inference workflow rather than a notebook-only result.</li>
+          </ul>
+        </div>
 
-    <div class="event">    
-      <p><strong>Suicide Prediction — Socioeconomic Analysis</strong></p>
-      <p>2024</p>
-      <div class="event-details">
-        <ul>
-          <li>Lifted accuracy from 81.6% → 97% via KNN + GridSearchCV + socioeconomic features.</li>
-          <li>Improved viz clarity by 80% with advanced Matplotlib on economic &amp; mental-health trends.</li>
-        </ul>
-        <a href="https://github.com/yuni-wyx/SuicidePrediction" target="_blank" rel="noopener">Project Report</a>
-      </div>
-    </div>
+        <div class="modal-block full">
+          <div class="modal-block-title">Tech Stack</div>
+          <div class="modal-tech">
+            <span>Python</span>
+            <span>PyTorch</span>
+            <span>ResNet</span>
+            <span>Grad-CAM</span>
+            <span>Docker</span>
+            <span>GCP</span>
+            <span>Cloud Run</span>
+            <span>Cloud Storage</span>
+          </div>
+        </div>
 
-    <div class="event">  
-      <p><strong>Uncovering Patterns in Fitness Data</strong></p>
-      <p>2024</p>
-      <div class="event-details">
-        <ul>
-          <li>Clustered fitness data (scikit-learn) to improve program segmentation by 85%.</li>
-          <li>Built engagement predictors; projected +20% memberships via personalization.</li>
-        </ul>
-        <a href="https://github.com/yuni-wyx/UncoveringPatternsInFitnessData" target="_blank" rel="noopener">Project Report</a>
-      </div>
-    </div>
-
-    <div class="event">
-      <p><strong>Online Shop Analysis</strong></p>
-      <p>2022–2024</p>
-      <div class="event-details">
-        <ul>
-          <li>Optimized ads (Python + Tableau): −20% CPC, −40% cost per purchase.</li>
-          <li>A/B tests refined placements; +20% annual sales.</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="timeline-group" id="leadership">Leadership</h3>
-
-    <div class="event">
-      <p><strong>President</strong></p>
-      <p>Taiwanese Student Association (TSA) at CU Boulder</p>
-      <p>2024 – Present</p>
-      <div class="event-details">
-        <ul>
-          <li>Lead a <span class="hl">15-member board</span> serving 200+ students; organized cultural &amp; social programs.</li>
-          <li>Managed funding, logistics, and university coordination (CSI, SOAC); secured travel/activity grants.</li>
-          <li>Executed <span class="hl">Mid-Autumn BBQ, Ski Trip, Welcome Night</span> to strengthen community ties.</li>
-          <li>Redesigned bylaws, budgeting, and promo materials to improve continuity and transparency.</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="timeline-group" id="awards">Awards</h3>
-
-    <div class="event">
-      <p><strong>Jordan Job Platform (Hackathon)</strong></p>
-      <p>2024</p>
-      <div class="event-details">
-        <ul>
-          <li>Flask platform connecting 500+ youth to jobs; ML demand prediction drove +20% engagement.</li>
-          <li>Interactive dashboards (API + EDA) increased registration by 10%.</li>
-        </ul>
-        <a href="https://github.com/yuni-wyx/EmpoweringYouthEmployment" target="_blank" rel="noopener">Project Report</a>
+        <div class="modal-block full">
+          <div class="modal-block-title">Links</div>
+          <div class="modal-links">
+            <a href="https://nailai-backend-299381123286.us-central1.run.app/">Demo</a>
+            <a href="#case-studies">Case Study Section</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Yuni Wu</p>
-  </footer>
+  <div class="modal" id="modal-emotionflow" aria-hidden="true" role="dialog" aria-labelledby="modal-emotionflow-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <div class="modal-meta">LLM Applications · Backend Systems · Recommendation</div>
+          <h3 class="modal-title" id="modal-emotionflow-title">EmotionFlow — LLM-Powered Recommendation Engine</h3>
+          <p class="modal-summary">
+            A real-time emotional recommendation system that converts conversational context
+            into personalized music suggestions through a structured backend pipeline.
+          </p>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+      </div>
 
-  <!-- Scripts: particles + app -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-  <script src="./js/particles.js" defer></script>
-  <script src="./js/app.js" defer></script>
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-num">Real-Time</div>
+          <div class="modal-stat-label">Recommendation Loop</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">Multi-Step</div>
+          <div class="modal-stat-label">Prompt Pipeline</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">Cloud</div>
+          <div class="modal-stat-label">Deployment Flow</div>
+        </div>
+      </div>
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/696b9179a6.js" crossorigin="anonymous" defer></script>
+      <div class="modal-grid">
+        <div class="modal-block">
+          <div class="modal-block-title">Problem</div>
+          <p>
+            Most recommendation systems lean heavily on historical behavior. This project focused
+            on extracting emotional context from live conversation while keeping the system responsive.
+          </p>
+        </div>
 
-  <!-- Typewriter (kept inline for simplicity) -->
+        <div class="modal-block">
+          <div class="modal-block-title">What I Built</div>
+          <p>
+            I designed the backend service flow, structured prompt logic, wrapped the system in FastAPI,
+            and prepared it for cloud deployment so it could operate as an interactive application.
+          </p>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Technical Decisions</div>
+          <ul>
+            <li>Kept orchestration explicit so the pipeline remained debuggable.</li>
+            <li>Organized prompts around useful emotional context rather than generic chat output.</li>
+            <li>Used a backend service design instead of a notebook demo for better product realism.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Outcome</div>
+          <ul>
+            <li>Delivered a real-time recommendation prototype with a cleaner backend architecture.</li>
+            <li>Strengthened product-oriented thinking around LLM applications.</li>
+            <li>Built a system that can be discussed in terms of flow, reliability, and deployment.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block full">
+          <div class="modal-block-title">Tech Stack</div>
+          <div class="modal-tech">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>LLM APIs</span>
+            <span>Prompt Design</span>
+            <span>Cloud Run</span>
+            <span>GCP</span>
+          </div>
+        </div>
+
+        <div class="modal-block full">
+          <div class="modal-block-title">Links</div>
+          <div class="modal-links">
+            <a href="https://github.com/yuni-wyx/EmotionFlow">GitHub</a>
+            <a href="https://emotionflow-40672525442.us-central1.run.app/">Demo</a>
+            <a href="#case-studies">Case Study Section</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-go1" aria-hidden="true" role="dialog" aria-labelledby="modal-go1-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <div class="modal-meta">Robotics · Behavior Cloning · Vision Policy</div>
+          <h3 class="modal-title" id="modal-go1-title">Vision-Based Imitation Learning for Go1 Navigation</h3>
+          <p class="modal-summary">
+            A vision-based behavior cloning pipeline for quadruped navigation, centered on
+            action prediction and residual-driven evaluation.
+          </p>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+      </div>
+
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-num">Vision</div>
+          <div class="modal-stat-label">Image Input Policy</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">ROS</div>
+          <div class="modal-stat-label">Robot Stack</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">Residuals</div>
+          <div class="modal-stat-label">Evaluation Focus</div>
+        </div>
+      </div>
+
+      <div class="modal-grid">
+        <div class="modal-block">
+          <div class="modal-block-title">Problem</div>
+          <p>
+            Learn control behavior from vision in a way that is measurable, stable, and interpretable
+            enough to reason about policy errors rather than just viewing single trajectory outputs.
+          </p>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">What I Built</div>
+          <p>
+            I trained a ResNet-based behavior cloning model for action prediction and evaluated the
+            policy through velocity-wise residual analysis and trajectory-level metrics.
+          </p>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Technical Decisions</div>
+          <ul>
+            <li>Used image-based encoding to keep the perception-policy path compact.</li>
+            <li>Treated residual diagnostics as a first-class evaluation tool.</li>
+            <li>Focused on action-dimension behavior instead of relying only on aggregate scores.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Outcome</div>
+          <ul>
+            <li>Produced an end-to-end imitation learning pipeline for robotic navigation.</li>
+            <li>Created an evaluation approach that made policy behavior easier to interpret.</li>
+            <li>Strengthened my robotics and perception-to-action systems experience.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block full">
+          <div class="modal-block-title">Tech Stack</div>
+          <div class="modal-tech">
+            <span>Python</span>
+            <span>PyTorch</span>
+            <span>ResNet</span>
+            <span>ROS</span>
+            <span>Behavior Cloning</span>
+            <span>Residual Analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-validation" aria-hidden="true" role="dialog" aria-labelledby="modal-validation-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <div class="modal-meta">Data Engineering · Monitoring · Production Reliability</div>
+          <h3 class="modal-title" id="modal-validation-title">Production Data Validation Pipeline</h3>
+          <p class="modal-summary">
+            Validation and anomaly detection workflows designed to improve production reliability,
+            reduce manual inspection, and support downstream data and ML systems.
+          </p>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>&times;</button>
+      </div>
+
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-num">800+</div>
+          <div class="modal-stat-label">Scenarios</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">80%</div>
+          <div class="modal-stat-label">Less Manual Inspection</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-num">78%</div>
+          <div class="modal-stat-label">Faster Reporting</div>
+        </div>
+      </div>
+
+      <div class="modal-grid">
+        <div class="modal-block">
+          <div class="modal-block-title">Problem</div>
+          <p>
+            Production pipelines need validation logic that can catch issues early without requiring
+            constant human review. Reliability here directly affects analytics and downstream ML usage.
+          </p>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">What I Built</div>
+          <p>
+            I built Python-based monitoring and anomaly detection workflows that automated checks
+            across a large set of production scenarios and shortened reporting turnaround.
+          </p>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Technical Decisions</div>
+          <ul>
+            <li>Designed for scale across many operational scenarios, not one-off scripts.</li>
+            <li>Optimized the workflow around monitoring usefulness and reporting speed.</li>
+            <li>Improved data retrieval efficiency to support more reliable downstream processing.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block">
+          <div class="modal-block-title">Outcome</div>
+          <ul>
+            <li>Reduced manual inspection effort by 80%.</li>
+            <li>Reduced reporting turnaround by 78%.</li>
+            <li>Strengthened system observability and data quality at production scale.</li>
+          </ul>
+        </div>
+
+        <div class="modal-block full">
+          <div class="modal-block-title">Tech Stack</div>
+          <div class="modal-tech">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>Monitoring</span>
+            <span>Validation</span>
+            <span>GCP</span>
+            <span>Anomaly Detection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const phrases = [
-      "Data Explorer · AI Enthusiast · Problem Solver",
-      "AI Model Trainer · Statistics & ML · Data Mining",
-      "Building human-centered AI · One experiment at a time"
-    ];
-    const el = document.getElementById("typewriter");
-    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-    async function typeLoop() {
-      let i = 0;
-      while (true) {
-        const text = phrases[i % phrases.length];
-        for (let j = 1; j <= text.length; j++) { el.textContent = text.slice(0, j); await sleep(28); }
-        await sleep(1100);
-        for (let j = text.length; j >= 0; j--) { el.textContent = text.slice(0, j); await sleep(14); }
-        await sleep(260);
-        i++;
+    /* stars */
+    (function () {
+      const c = document.getElementById("stars");
+      const ctx = c.getContext("2d");
+      let W, H, stars = [];
+
+      function resize() {
+        W = c.width = window.innerWidth;
+        H = c.height = window.innerHeight;
       }
+
+      function init() {
+        stars = [];
+        for (let i = 0; i < 130; i++) {
+          stars.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 0.9 + 0.18,
+            a: Math.random() * Math.PI * 2,
+            sp: Math.random() * 0.004 + 0.001,
+            drift: Math.random() * 0.06 - 0.03
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        stars.forEach((s) => {
+          s.a += s.sp;
+          s.x += s.drift;
+          if (s.x > W) s.x = 0;
+          if (s.x < 0) s.x = W;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(240,232,220,${0.12 + Math.abs(Math.sin(s.a)) * 0.34})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener("resize", () => {
+        resize();
+        init();
+      });
+
+      resize();
+      init();
+      draw();
+    })();
+
+    /* typewriter */
+    const phrases = [
+      "ML Engineer · Data & AI Systems",
+      "Available for 2026 Roles",
+      "Computer Vision · LLM Apps · Cloud",
+      "Building AI that ships"
+    ];
+    const twEl = document.getElementById("tw");
+    let pi = 0;
+    let ci = 0;
+    let deleting = false;
+
+    function type() {
+      const word = phrases[pi];
+
+      if (!deleting) {
+        twEl.textContent = word.slice(0, ++ci);
+        if (ci === word.length) {
+          deleting = true;
+          setTimeout(type, 1500);
+          return;
+        }
+      } else {
+        twEl.textContent = word.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          pi = (pi + 1) % phrases.length;
+        }
+      }
+
+      setTimeout(type, deleting ? 40 : 78);
     }
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!prefersReduced) typeLoop(); else { document.querySelector(".caret").style.display="none"; el.textContent = phrases[0]; }
+
+    type();
+
+    /* ticker */
+    const tickerItems = [
+      "ML Engineer",
+      "Computer Vision",
+      "LLM Applications",
+      "Python",
+      "PyTorch",
+      "GCP",
+      "Cloud Run",
+      "FastAPI",
+      "Docker",
+      "Data Validation",
+      "Monitoring",
+      "BigQuery",
+      "ROS",
+      "ETL",
+      "Applied AI",
+      "ML Engineer",
+      "Computer Vision",
+      "LLM Applications",
+      "Python",
+      "PyTorch",
+      "GCP",
+      "Cloud Run",
+      "FastAPI",
+      "Docker",
+      "Data Validation",
+      "Monitoring",
+      "BigQuery",
+      "ROS",
+      "ETL",
+      "Applied AI"
+    ];
+    const tk = document.getElementById("ticker");
+    tk.innerHTML = tickerItems
+      .map((item, i) => `<span class="t-item${i % 5 === 0 ? " lit" : ""}">${item}</span>`)
+      .join("");
+
+    /* reveal */
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add("visible"), i * 60);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+    /* mobile nav */
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+
+    document.querySelectorAll("#mobileMenu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* modals */
+    const modalButtons = document.querySelectorAll("[data-modal]");
+    const allModals = document.querySelectorAll(".modal");
+    let lastFocused = null;
+
+    function openModal(modalId, trigger) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      lastFocused = trigger || document.activeElement;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      const closeBtn = modal.querySelector(".modal-close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+
+    modalButtons.forEach((btn) => {
+      btn.addEventListener("click", () => openModal(btn.dataset.modal, btn));
+    });
+
+    allModals.forEach((modal) => {
+      modal.querySelectorAll("[data-close]").forEach((el) => {
+        el.addEventListener("click", () => closeModal(modal));
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const activeModal = document.querySelector(".modal.open");
+        if (activeModal) closeModal(activeModal);
+        mobileMenu.classList.remove("open");
+        navToggle?.setAttribute("aria-expanded", "false");
+      }
+    });
   </script>
 </body>
 </html>
