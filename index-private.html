@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuni Wu Portfolio Versions</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#060810">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon.png">
+<style>
+:root {
+  --bg0: #060810;
+  --bg1: #090c15;
+  --bg2: #0c1018;
+  --line: rgba(255,255,255,0.06);
+  --line2: rgba(255,255,255,0.04);
+  --cyan: #4dd9c0;
+  --cyan-dim: rgba(77,217,192,0.15);
+  --cyan-glow: rgba(77,217,192,0.08);
+  --white: #f4f6fa;
+  --gray1: #9aa3b8;
+  --gray2: #5c6478;
+  --gray3: #353c50;
+  --ff: 'IBM Plex Sans', system-ui, sans-serif;
+  --ffm: 'IBM Plex Mono', 'Courier New', monospace;
+  --r: 4px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{
+  min-height:100vh;
+  background:var(--bg0);
+  color:var(--white);
+  font-family:var(--ff);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+
+#grid-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(var(--line2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line2) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 82% 82% at 50% 18%, black 22%, transparent 82%);
+}
+
+.ambient{
+  position:fixed;
+  inset:-10% auto auto -10%;
+  width:680px;
+  height:680px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(77,217,192,.08) 0%, transparent 68%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.shell{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px 24px;
+}
+
+.panel{
+  width:min(960px, 100%);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:'';
+  width:18px;
+  height:1px;
+  background:var(--cyan);
+}
+
+h1{
+  font-size:clamp(2.4rem, 5vw, 4rem);
+  line-height:1.02;
+  letter-spacing:-.03em;
+  font-weight:600;
+  margin-bottom:14px;
+}
+
+.subtitle{
+  max-width:680px;
+  color:var(--gray1);
+  font-size:1.05rem;
+  margin-bottom:34px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.card{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-height:220px;
+  padding:30px 28px 26px;
+  background:var(--bg1);
+  border:1px solid transparent;
+  position:relative;
+  transition:transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+  outline:none;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0 auto auto 0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(to right, var(--cyan), transparent 68%);
+  opacity:.55;
+}
+
+.card:hover,
+.card:focus-visible{
+  transform:translateY(-4px);
+  border-color:rgba(77,217,192,.32);
+  background:var(--bg2);
+  box-shadow:0 14px 40px rgba(77,217,192,.08);
+}
+
+.card-title{
+  font-size:1.55rem;
+  line-height:1.12;
+  letter-spacing:-.02em;
+  font-weight:600;
+  color:var(--white);
+}
+
+.card-desc{
+  color:var(--gray1);
+  font-size:1rem;
+  line-height:1.55;
+  max-width:34ch;
+}
+
+.card-cta{
+  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--ffm);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--cyan);
+}
+
+.card-cta svg{
+  width:14px;
+  height:14px;
+  flex-shrink:0;
+}
+
+@media (max-width: 800px){
+  .shell{padding:40px 18px;}
+  .grid{grid-template-columns:1fr;}
+  .card{min-height:unset;padding:26px 22px 22px;}
+}
+</style>
+</head>
+<body>
+<div id="grid-bg"></div>
+<div class="ambient"></div>
+
+<main class="shell">
+  <section class="panel" aria-labelledby="page-title">
+    <div class="eyebrow">Private Entry</div>
+    <h1 id="page-title">Portfolio Versions</h1>
+    <p class="subtitle">Select a tailored portfolio based on role</p>
+
+    <div class="grid">
+      <a class="card" href="./robotics.html" aria-label="Open Robotics SWE portfolio">
+        <h2 class="card-title">Robotics SWE</h2>
+        <p class="card-desc">Perception, ROS, control systems, and real-world robot deployment.</p>
+        <span class="card-cta">Open Portfolio
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="card" href="./mle.html" aria-label="Open Machine Learning Engineer portfolio">
+        <h2 class="card-title">Machine Learning Engineer</h2>
+        <p class="card-desc">Model development, evaluation, and production ML systems.</p>
+        <span class="card-cta">Open Portfolio
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="card" href="./ai-swe.html" aria-label="Open AI Software Engineer portfolio">
+        <h2 class="card-title">AI Software Engineer</h2>
+        <p class="card-desc">LLM systems, backend pipelines, and applied AI products.</p>
+        <span class="card-cta">Open Portfolio
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="card" href="./data.html" aria-label="Open Data Engineer and Data Scientist portfolio">
+        <h2 class="card-title">Data Engineer / Data Scientist</h2>
+        <p class="card-desc">Data pipelines, validation, monitoring, and analytics systems.</p>
+        <span class="card-cta">Open Portfolio
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

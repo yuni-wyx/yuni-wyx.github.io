@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuni Wu — AI Systems Engineer</title>
+<title>Yuni Wu Portfolio</title>
 <meta
   name="description"
-  content="Yuni Wu is an AI systems engineer building robotics navigation systems, production ML pipelines, and LLM-powered applications."
+  content="Yuni Wu is a data engineer and data scientist candidate building data validation workflows, anomaly detection systems, BigQuery pipelines, model evaluation, and ML-related analytics workflows."
 >
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="./img/icon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./img/icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="Yuni Wu Portfolio">
+<meta property="og:description" content="Yuni Wu is a data engineer and data scientist candidate building data validation workflows, anomaly detection systems, BigQuery pipelines, model evaluation, and ML-related analytics workflows.">
+<meta property="og:type" content="website">
 <meta name="theme-color" content="#060810">
 <style>
 /* ═══════════════════════════════════════════
@@ -367,9 +370,10 @@ nav{
 }
 .hero-entry-body{
   display:grid;
+  grid-template-rows:auto 1fr;
   align-content:start;
-  gap:6px;
-  min-height:62px;
+  gap:8px;
+  min-height:68px;
 }
 .hero-entry.e-robotics{
   background:
@@ -445,15 +449,16 @@ nav{
   font-size:18px;
   font-weight:600;
   color:var(--white);
-  margin-bottom:6px;
+  margin-bottom:0;
   letter-spacing:-.01em;
+  min-height:1.35em;
 }
 .hero-entry-copy{
   font-size:13px;
   line-height:1.6;
   color:var(--gray1);
   max-width:22ch;
-  min-height:42px;
+  min-height:3.2em;
 }
 
 /* HERO ACTIONS */
@@ -542,47 +547,94 @@ nav{
 
 .proj-layout{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  align-items:stretch;
   gap:1px;
-  background:var(--line);
+  background:transparent;
   border:1px solid var(--line);
   border-radius:4px;
   overflow:hidden;
 }
+.proj-layout > .proj-card.featured,
+.proj-layout > .proj-stack{
+  min-width:0;
+  align-self:stretch;
+}
+.proj-stack{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:transparent;
+  align-self:stretch;
+}
+.proj-stack > .proj-card{
+  flex:0 0 auto;
+  min-height:330px;
+}
 .proj-card{
   background:var(--bg1);
   padding:40px 40px 36px;
-  display:flex;flex-direction:column;gap:0;
-  position:relative;overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:relative;
+  overflow:hidden;
   transition:background .25s;
   min-height:330px;
+  isolation:isolate;
+}
+.proj-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--bg1);
+  z-index:-1;
 }
 .proj-card:hover{background:var(--bg2);}
+.proj-card:hover::after{background:var(--bg2);}
 .proj-card::before{
   content:'';
   position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(to right,var(--cyan),transparent);
   transform:scaleX(0);transform-origin:left;
   transition:transform .4s;
+  z-index:1;
 }
 .proj-card:hover::before{transform:scaleX(1);}
 .proj-card.featured{
-  grid-row:1/3;
   padding:52px 48px 46px;
+  height:auto;
   min-height:100%;
+  align-self:stretch;
 }
 .proj-feature-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  align-items:start;
-  height:100%;
+  display:flex;
+  flex-direction:column;
 }
 .proj-feature-copy{
   display:flex;
   flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+.proj-card.featured .proj-feature-grid{
+  display:flex;
+  flex-direction:column;
+  flex:1;
   min-height:100%;
+}
+.project-primary{
+  display:flex;
+  flex-direction:column;
+}
+.project-primary > .proj-feature-grid{
+  flex:1;
+}
+.project-primary .proj-feature-copy{
+  flex:1;
+}
+.project-primary .proj-actions{
+  margin-top:auto;
 }
 .go1-visual{
   position:relative;
@@ -745,21 +797,21 @@ nav{
 
 .proj-index{
   font-family:var(--ffm);font-size:10px;letter-spacing:.2em;
-  color:var(--gray3);margin-bottom:20px;
+  color:var(--gray3);margin-bottom:0;
   display:flex;align-items:center;justify-content:space-between;
 }
 .proj-domain{
   font-family:var(--ffm);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--cyan);margin-bottom:12px;
+  color:var(--cyan);margin-bottom:0;
 }
 .proj-title{
   font-size:27px;font-weight:600;letter-spacing:-.02em;
-  color:var(--white);margin-bottom:10px;line-height:1.2;
+  color:var(--white);margin-bottom:0;line-height:1.2;
 }
-.proj-card.featured .proj-title{font-size:36px;margin-bottom:16px;}
+.proj-card.featured .proj-title{font-size:36px;margin-bottom:0;}
 .proj-desc{
   font-size:15px;color:var(--gray1);line-height:1.8;
-  margin-bottom:auto;padding-bottom:28px;
+  margin-bottom:0;padding-bottom:0;
   max-width:60ch;
 }
 .proj-card.featured .proj-desc{font-size:16px;}
@@ -767,7 +819,7 @@ nav{
   display:flex;
   flex-direction:column;
   gap:10px;
-  margin:0 0 22px;
+  margin:0;
 }
 .proj-brief-row{
   display:grid;
@@ -814,7 +866,7 @@ nav{
 }
 .proj-stats{
   display:flex;flex-wrap:wrap;gap:10px;
-  margin-bottom:20px;
+  margin-bottom:0;
 }
 .pstat{
   display:flex;flex-direction:column;gap:2px;
@@ -825,14 +877,18 @@ nav{
   color:var(--cyan);line-height:1;
 }
 .pstat-l{font-family:var(--ffm);font-size:10px;color:var(--gray2);}
-.proj-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+.proj-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0;}
 .proj-actions{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
   align-items:center;
   margin-top:auto;
+  padding-top:4px;
 }
+.proj-card > .proj-actions{margin-top:auto;padding-top:4px;}
+.proj-feature-copy > .proj-actions{margin-top:auto;padding-top:4px;}
+.proj-wide-grid .proj-actions{margin-top:12px !important;padding-top:0;}
 .proj-wide{
   background:var(--bg1);
 }
@@ -1016,9 +1072,14 @@ footer{
   .hero-grid{grid-template-columns:1fr;gap:48px;}
   .hero-panel{display:none;}
   .hero-entry-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .proj-layout{grid-template-columns:1fr;grid-template-rows:auto;}
-  .proj-card.featured{grid-row:auto;}
-  .proj-feature-grid{grid-template-columns:1fr;}
+  .proj-layout{grid-template-columns:1fr;}
+  .proj-layout > .proj-card.featured,
+  .proj-layout > .proj-stack{align-self:auto;}
+  .proj-card.featured,
+  .proj-card.featured .proj-feature-grid,
+  .proj-feature-grid,
+  .proj-feature-copy{min-height:auto;height:auto;}
+  .proj-stack{height:auto;}
   .proj-wide-grid{grid-template-columns:1fr;}
   .tracks-grid{grid-template-columns:1fr;}
   .exp-item{grid-template-columns:1fr;}
@@ -1038,15 +1099,22 @@ footer{
   #hero{padding:72px 0 48px;}
   .hero-entry-grid{grid-template-columns:1fr;}
   .hero-actions{flex-wrap:wrap;}
+  .proj-layout{grid-template-columns:1fr;}
+  .proj-stack{min-height:auto;height:auto;}
+  .proj-stack > .proj-card{min-height:auto;}
+  .proj-card.featured,
+  .proj-feature-grid,
+  .proj-feature-copy{min-height:auto;height:auto;}
   .contact-link{width:100%;justify-content:center;}
   .proj-card,
   .proj-card.featured{padding:28px 24px 24px;}
   .go1-visual{min-height:190px;}
   .go1-orbit{inset:34px 14px 20px;}
   .go1-bot{transform:translate(-50%,-50%) scale(.72);}
-  .hero-entry{min-height:118px;padding:18px 16px 16px;}
+  .hero-entry{min-height:110px;padding:16px 14px 14px;}
+  .hero-entry-body{min-height:auto;gap:6px;}
   .hero-entry-name{font-size:17px;}
-  .hero-entry-copy{font-size:12.5px;line-height:1.55;}
+  .hero-entry-copy{font-size:12.5px;line-height:1.55;min-height:0;}
   .proj-title{font-size:23px;}
   .proj-card.featured .proj-title{font-size:29px;}
   .proj-domain{font-size:10px;}
@@ -1116,57 +1184,56 @@ footer{
         </h1>
 
         <p class="hero-role rv" style="transition-delay:.16s">
-          <strong>MS Data Science student building robotics software, machine learning systems, and backend AI applications</strong> -
-          focused on deployable ML, robot navigation, and production-oriented software workflows.
-          University of Colorado Boulder · May 2026.
+          <strong>MS Data Science student building reliable data workflows for analytics, monitoring, and machine learning</strong> -
+          focused on SQL-driven validation, anomaly detection, BigQuery/GCP workflows, ETL pipelines, and model evaluation. University of Colorado Boulder · May 2026.
         </p>
 
         <div class="target-roles rv" style="transition-delay:.22s">
-          <span class="target-role"><span class="tr-dot tr-r"></span>Robotics Software Engineer</span>
-          <span class="target-role"><span class="tr-dot tr-m"></span>Machine Learning Engineer</span>
-          <span class="target-role"><span class="tr-dot tr-s"></span>AI Software Engineer</span>
+          <span class="target-role"><span class="tr-dot tr-r"></span>Data Engineer</span>
+          <span class="target-role"><span class="tr-dot tr-m"></span>Data Scientist</span>
+          <span class="target-role"><span class="tr-dot tr-s"></span>Analytics Engineer</span>
         </div>
 
         <div class="hero-entry-label rv" style="transition-delay:.26s">Launch Featured Work</div>
         <div class="hero-entry-grid rv" style="transition-delay:.3s">
-          <a href="https://yuni-wyx.github.io/go1-autonomous-navigation/" target="_blank" rel="noopener noreferrer" class="hero-entry e-robotics">
+          <a href="#projects" class="hero-entry e-product">
             <div class="hero-entry-top">
-              <span class="hero-entry-kicker">Robotics</span>
+              <span class="hero-entry-kicker">Data Reliability</span>
               <span class="hero-entry-arrow">01 ↗</span>
             </div>
             <div class="hero-entry-body">
-              <div class="hero-entry-name">Go1</div>
-              <div class="hero-entry-copy">Imitation learning + VLM social navigation on Unitree Go1.</div>
+              <div class="hero-entry-name">Shopee Workflows</div>
+              <div class="hero-entry-copy">Validation and monitoring across 800+ scenarios with Python, SQL, and GCP.</div>
             </div>
           </a>
           <a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="hero-entry e-ml">
             <div class="hero-entry-top">
-              <span class="hero-entry-kicker">Medical Vision</span>
+              <span class="hero-entry-kicker">ML Evaluation</span>
               <span class="hero-entry-arrow">02 ↗</span>
             </div>
             <div class="hero-entry-body">
               <div class="hero-entry-name">NailAI</div>
-              <div class="hero-entry-copy">22-class medical vision with Cloud Run deployment.</div>
+              <div class="hero-entry-copy">Structured datasets, class-imbalance evaluation, and deployment-oriented monitoring.</div>
             </div>
           </a>
           <a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="hero-entry e-llm">
             <div class="hero-entry-top">
-              <span class="hero-entry-kicker">LLM Application</span>
+              <span class="hero-entry-kicker">Feedback Flow</span>
               <span class="hero-entry-arrow">03 ↗</span>
             </div>
             <div class="hero-entry-body">
               <div class="hero-entry-name">EmotionFlow</div>
-              <div class="hero-entry-copy">LLM recommendation flow with FastAPI backend.</div>
+              <div class="hero-entry-copy">Recommendation metrics and feedback-oriented evaluation for an LLM app.</div>
             </div>
           </a>
-          <a href="https://yuni-wyx.github.io/StockIntelligenceCopilot/" target="_blank" rel="noopener noreferrer" class="hero-entry e-product">
+          <a href="https://yuni-wyx.github.io/go1-autonomous-navigation/" target="_blank" rel="noopener noreferrer" class="hero-entry e-robotics">
             <div class="hero-entry-top">
-              <span class="hero-entry-kicker">AI Software</span>
+              <span class="hero-entry-kicker">Structured Logs</span>
               <span class="hero-entry-arrow">04 ↗</span>
             </div>
             <div class="hero-entry-body">
-              <div class="hero-entry-name">StockAI</div>
-              <div class="hero-entry-copy">Stock research workflow built with FastAPI and Next.js.</div>
+              <div class="hero-entry-name">Go1</div>
+              <div class="hero-entry-copy">Robot logs converted into state-action datasets for evaluation and diagnostics.</div>
             </div>
           </a>
         </div>
@@ -1190,14 +1257,10 @@ footer{
           <div class="hp-body">
             <div class="hp-row"><span class="hp-key">name</span><span class="hp-val">"Yuni Wu"</span></div>
             <div class="hp-row"><span class="hp-key">location</span><span class="hp-val">"Colorado, USA"</span></div>
-            <div class="hp-row"><span class="hp-key">degree</span><span class="hp-val cyan">"MS Data Science"</span></div>
-            <div class="hp-row"><span class="hp-key">university</span><span class="hp-val">"CU Boulder"</span></div>
-            <div class="hp-row"><span class="hp-key">gpa</span><span class="hp-val cyan">3.81 / 4.0</span></div>
+            <div class="hp-row"><span class="hp-key">focus</span><span class="hp-val cyan">"Data Reliability & ML Evaluation"</span></div>
+            <div class="hp-row"><span class="hp-key">strongest_exp</span><span class="hp-val">"Shopee Workflows"</span></div>
+            <div class="hp-row"><span class="hp-key">core_stack</span><span class="hp-val">"Python, SQL, BigQuery, GCP"</span></div>
             <div class="hp-row"><span class="hp-key">graduation</span><span class="hp-val amber">"May 2026"</span></div>
-            <div class="hp-row"><span class="hp-key">open_to</span><span class="hp-val cyan">"Full-time roles"</span></div>
-            <div class="hp-row"><span class="hp-key">languages</span><span class="hp-val">"Python, Go, SQL"</span></div>
-            <div class="hp-row"><span class="hp-key">cloud</span><span class="hp-val">"GCP"</span></div>
-            <div class="hp-row"><span class="hp-key">frameworks</span><span class="hp-val">"PyTorch, FastAPI, ROS"</span></div>
           </div>
         </div>
       </div>
@@ -1208,230 +1271,32 @@ footer{
 
 <!-- ═══════════ METRICS ═══════════ -->
 <div class="metrics-strip z rv">
-    <div class="metrics-inner">
-      <div class="metric" style="padding-left:0">
-        <span class="metric-n">93%</span>
-        <span class="metric-l">NailAI / image classification accuracy</span>
-      </div>
-      <div class="metric" style="padding-left:32px">
-        <span class="metric-n">50K+</span>
-        <span class="metric-l">MyEdMaster training images</span>
-      </div>
-      <div class="metric" style="padding-left:32px">
-        <span class="metric-n">800+</span>
-        <span class="metric-l">Shopee production scenarios</span>
-      </div>
-      <div class="metric" style="padding-left:32px">
-        <span class="metric-n">80%</span>
-        <span class="metric-l">Shopee manual inspection reduction</span>
-      </div>
-      <div class="metric" style="padding-left:32px">
-        <span class="metric-n">30%</span>
-        <span class="metric-l">MyEdMaster minority-class F1 lift</span>
-      </div>
+  <div class="metrics-inner">
+    <div class="metric" style="padding-left:0">
+      <span class="metric-n">800+</span>
+      <span class="metric-l">production scenarios</span>
+    </div>
+    <div class="metric" style="padding-left:32px">
+      <span class="metric-n">80%</span>
+      <span class="metric-l">manual inspection reduction</span>
+    </div>
+    <div class="metric" style="padding-left:32px">
+      <span class="metric-n">78%</span>
+      <span class="metric-l">reporting turnaround reduction</span>
+    </div>
+    <div class="metric" style="padding-left:32px">
+      <span class="metric-n">50K+</span>
+      <span class="metric-l">medical image records</span>
+    </div>
+    <div class="metric" style="padding-left:32px">
+      <span class="metric-n">15%</span>
+      <span class="metric-l">query / retrieval latency reduction</span>
+    </div>
   </div>
 </div>
 
 <!-- ═══════════ PROJECTS ═══════════ -->
-<section id="projects" class="z">
-  <div class="wrap" style="padding-top:96px;padding-bottom:96px;">
-    <div class="lbl rv">Featured Projects</div>
-    <h2 class="sec-title rv">Systems I've <span>shipped</span></h2>
-
-    <div class="proj-layout rv">
-
-      <article class="proj-card featured">
-        <div class="proj-feature-grid">
-          <div class="proj-feature-copy">
-            <div class="proj-index">
-              <span class="mono-xs">01 / ROBOTICS</span>
-            </div>
-            <div class="proj-domain">Robotics • Computer Vision • ROS</div>
-            <div class="proj-title">Go1 Autonomous Navigation</div>
-            <div class="proj-desc">
-              Go1 navigation project combining imitation learning with VLM-based social navigation, ROS integration, and safety-aware control for real robot deployment.
-            </div>
-            <div class="proj-brief">
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Problem</div>
-                <div class="proj-brief-text">Navigate a real quadruped robot under <strong>latency, control, and safety constraints</strong>.</div>
-              </div>
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Built</div>
-                <div class="proj-brief-text">A <strong>ResNet18 imitation learning pipeline</strong> plus <strong>Qwen3 / InternVL social navigation</strong> with ROS integration and safety-aware action projection.</div>
-              </div>
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Outcome</div>
-                <div class="proj-brief-text">A <strong>deployable Go1 navigation pipeline</strong> designed for real robot testing rather than simulation-only demos.</div>
-              </div>
-            </div>
-            <div class="go1-visual" aria-hidden="true">
-              <div class="go1-grid"></div>
-              <div class="go1-orbit"></div>
-              <div class="go1-bot">
-                <div class="go1-node n1"></div>
-                <div class="go1-node n2"></div>
-                <div class="go1-node n3"></div>
-                <div class="go1-back"></div>
-                <div class="go1-body"></div>
-                <div class="go1-neck"></div>
-                <div class="go1-head"></div>
-                <div class="go1-joint j1"></div>
-                <div class="go1-joint j2"></div>
-                <div class="go1-joint j3"></div>
-                <div class="go1-joint j4"></div>
-                <div class="go1-leg l1"></div>
-                <div class="go1-leg l2"></div>
-                <div class="go1-leg l3"></div>
-                <div class="go1-leg l4"></div>
-              </div>
-              <div class="go1-caption">quadruped navigation mockup</div>
-            </div>
-            <div class="proj-chips">
-              <span class="chip">ROS</span><span class="chip">Python</span><span class="chip">VLM</span>
-              <span class="chip">Computer Vision</span><span class="chip">Imitation Learning</span>
-              <span class="chip">Safety-Aware Control</span><span class="chip">Unitree Go1</span>
-            </div>
-            <div class="proj-actions">
-              <a href="https://yuni-wyx.github.io/go1-autonomous-navigation/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-                View Project
-                <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div style="display:flex;flex-direction:column;gap:1px;background:var(--line);">
-
-        <article class="proj-card">
-          <div class="proj-index">
-            <span class="mono-xs">02 / ML SYSTEMS</span>
-          </div>
-          <div class="proj-domain">Fine-Grained Classification • GCP Cloud Run</div>
-          <div class="proj-title">NailAI — Medical Image Classifier</div>
-          <div class="proj-desc">
-            22-class medical image classifier with 93% accuracy, 30% minority-class F1 lift, 5x faster inference, and Cloud Run deployment.
-          </div>
-          <div class="proj-brief">
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Problem</div>
-              <div class="proj-brief-text">Classify <strong>22 nail disease categories</strong> while improving minority-class performance.</div>
-            </div>
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Built</div>
-              <div class="proj-brief-text">A <strong>fine-grained ResNet pipeline</strong> with model comparison, Grad-CAM explainability, and Cloud Run deployment.</div>
-            </div>
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Outcome</div>
-              <div class="proj-brief-text"><strong>93% accuracy</strong>, <strong>30% minority-class F1 lift</strong>, and <strong>5x faster inference</strong> with ResNet18.</div>
-            </div>
-          </div>
-          <div class="proj-stats">
-            <div class="pstat"><span class="pstat-n">93%</span><span class="pstat-l">Accuracy</span></div>
-            <div class="pstat"><span class="pstat-n">+30%</span><span class="pstat-l">Minority F1</span></div>
-            <div class="pstat"><span class="pstat-n">5x</span><span class="pstat-l">Faster Inference</span></div>
-          </div>
-          <div class="proj-chips">
-            <span class="chip">PyTorch</span><span class="chip">ResNet</span><span class="chip">Grad-CAM</span>
-            <span class="chip">Docker</span><span class="chip">GCP Cloud Run</span>
-          </div>
-          <div class="proj-actions">
-            <a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              View Demo
-              <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="proj-card">
-          <div class="proj-index">
-            <span class="mono-xs">03 / LLM SYSTEMS</span>
-          </div>
-          <div class="proj-domain">LLM • FastAPI • Cloud Run</div>
-          <div class="proj-title">EmotionFlow — Real-Time Recommendation</div>
-          <div class="proj-desc">
-            LLM recommendation application with structured prompt logic, FastAPI backend, and Cloud Run deployment.
-          </div>
-          <div class="proj-brief">
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Problem</div>
-              <div class="proj-brief-text">Turn conversational context into <strong>real-time emotional recommendations</strong>.</div>
-            </div>
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Built</div>
-              <div class="proj-brief-text">An <strong>LLM application flow</strong> with prompt logic, FastAPI orchestration, and Cloud Run deployment.</div>
-            </div>
-            <div class="proj-brief-row">
-              <div class="proj-brief-label">Outcome</div>
-              <div class="proj-brief-text">A <strong>live recommendation demo</strong> that shows backend orchestration and deployable LLM app design.</div>
-            </div>
-          </div>
-          <div class="proj-note">
-            <div class="proj-note-label">Workflow</div>
-            <div class="proj-note-text"><strong>Input context → prompt logic → FastAPI orchestration → recommendation output</strong>, deployed as a live Cloud Run application.</div>
-          </div>
-          <div class="proj-chips">
-            <span class="chip">LLM</span><span class="chip">Prompt Design</span><span class="chip">FastAPI</span>
-            <span class="chip">GCP Cloud Run</span><span class="chip">Real-Time</span>
-          </div>
-          <div class="proj-actions">
-            <a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-              View Demo
-              <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-
-    </div>
-
-    <div style="background:var(--line);margin-top:1px;border-radius:0 0 4px 4px;overflow:hidden;">
-      <article class="proj-card proj-wide">
-        <div class="proj-wide-grid">
-          <div>
-            <div class="proj-index"><span class="mono-xs">04 / FULL-STACK AI</span></div>
-            <div class="proj-domain">Equity Research • FastAPI • Next.js</div>
-            <div class="proj-title">StockAI — Intelligence Copilot</div>
-            <div class="proj-desc">
-              Full-stack stock research workflow built with FastAPI and Next.js for US and Taiwan markets.
-            </div>
-            <div class="proj-brief">
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Problem</div>
-                <div class="proj-brief-text">Make stock research and market monitoring <strong>faster to browse and act on</strong>.</div>
-              </div>
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Built</div>
-                <div class="proj-brief-text">A <strong>FastAPI + Next.js system</strong> for research, price-move explanation, and watchlist workflows.</div>
-              </div>
-              <div class="proj-brief-row">
-                <div class="proj-brief-label">Outcome</div>
-                <div class="proj-brief-text">A <strong>working full-stack project</strong> covering US and Taiwan market workflows end to end.</div>
-              </div>
-            </div>
-            <div class="proj-chips" style="margin-top:2px;">
-              <span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">Python</span>
-              <span class="chip">Workflow Design</span><span class="chip">Full-Stack</span>
-            </div>
-            <div class="proj-actions" style="margin-top:18px;">
-              <a href="https://yuni-wyx.github.io/StockIntelligenceCopilot/" target="_blank" rel="noopener noreferrer" class="proj-cta">
-                View Project
-                <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-              <a href="https://github.com/yuni-wyx/StockIntelligenceCopilot" target="_blank" rel="noopener noreferrer" class="proj-cta">
-                GitHub
-                <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-
-  </div>
-</section>
+<section id="projects" class="z"><div class="wrap" style="padding-top:96px;padding-bottom:96px;"><div class="lbl rv">Featured Projects</div><h2 class="sec-title rv">Systems I've <span>shipped</span></h2><div class="proj-layout rv"><article class="proj-card featured project-primary"><div class="proj-feature-grid"><div class="proj-feature-copy"><div class="proj-index"><span class="mono-xs">01 / DATA ENGINEERING</span></div><div class="proj-domain">Data Engineering • Monitoring • Anomaly Detection</div><div class="proj-title">Production Data Validation & Monitoring</div><div class="proj-desc">Production data validation and anomaly detection workflows across 800+ business scenarios, focused on data quality, regression detection, reporting automation, and downstream reliability.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Manual inspection and delayed reporting did not scale across hundreds of production scenarios.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">Python/SQL-based validation and monitoring workflows for anomaly detection, regression detection, and automated reporting across production data workflows.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Reduced manual inspection by <strong>80%</strong> and reporting turnaround by <strong>78%</strong>, while improving reliability for analytics and downstream ML-related processes.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Reliability</div><div class="proj-brief-text">Designed reusable validation and monitoring workflows to reduce manual inspection and shorten reporting turnaround across production data scenarios.</div></div></div><div class="proj-stats"><div class="pstat"><span class="pstat-n">800+</span><span class="pstat-l">Scenarios</span></div><div class="pstat"><span class="pstat-n">80%</span><span class="pstat-l">Less Manual QA</span></div><div class="pstat"><span class="pstat-n">78%</span><span class="pstat-l">Faster Reporting</span></div><div class="pstat"><span class="pstat-n">15%</span><span class="pstat-l">Latency Reduction</span></div></div><div class="proj-chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">BigQuery</span><span class="chip">ETL</span><span class="chip">Data Validation</span><span class="chip">Anomaly Detection</span><span class="chip">Monitoring</span><span class="chip">GCP</span></div></div></div></article><div class="proj-stack"><article class="proj-card"><div class="proj-index"><span class="mono-xs">02 / ML EVALUATION</span></div><div class="proj-domain">50K+ Records • Class Imbalance • Model Evaluation</div><div class="proj-title">NailAI — Data & ML Evaluation Pipeline</div><div class="proj-desc">Medical image workflow showing structured datasets, 22-class evaluation, minority-class F1 analysis, and deployment-oriented monitoring discipline.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Data</div><div class="proj-brief-text">Uses structured medical image records, class-level evaluation, and model monitoring concepts to support analytics-ready ML workflows.</div></div></div><div class="proj-actions"><a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article><article class="proj-card"><div class="proj-index"><span class="mono-xs">03 / EVALUATION DATA FLOW</span></div><div class="proj-domain">Feedback • Metrics • Logging</div><div class="proj-title">EmotionFlow — Feedback & Evaluation Data Flow</div><div class="proj-desc">Recommendation application with explicit feedback signals, evaluation metrics, and backend workflow structure for measuring recommendation quality.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Data</div><div class="proj-brief-text">Shows feedback collection, recommendation evaluation, and session-level signals for improving an AI application.</div></div></div><div class="proj-actions"><a href="https://github.com/yuni-wyx/EmotionFlow" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a><a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article></div></div><div style="background:var(--line);margin-top:1px;border-radius:0 0 4px 4px;overflow:hidden;"><article class="proj-card proj-wide"><div class="proj-wide-grid"><div><div class="proj-index"><span class="mono-xs">04 / ROBOTICS DATA PIPELINE</span></div><div class="proj-domain">Raw Logs • State-Action Datasets • Residual Diagnostics</div><div class="proj-title">Go1 — Robotics Data Pipeline</div><div class="proj-desc">Raw robot logs converted into supervised state-action datasets with residual diagnostics and action-level evaluation for robotics ML workflows.</div><div class="proj-actions"><a href="https://yuni-wyx.github.io/go1-autonomous-navigation/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Project</a><a href="https://github.com/yuni-wyx/go1-autonomous-navigation" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a></div></div></div></article></div></div></section>
 
 <!-- ═══════════ CAREER TRACKS ═══════════ -->
 <section id="tracks" class="z">
@@ -1441,39 +1306,22 @@ footer{
 
     <div class="tracks-grid rv">
       <div class="track">
-        <div class="track-icon">🤖</div>
-        <div class="track-name">Robotics Software</div>
-        <div class="track-line">
-          Robotics work centered on Go1: imitation learning, VLM-based social navigation, ROS integration, and safety-aware control for real robot workflows.
-        </div>
-        <div class="track-stack">
-          <span class="chip">ROS</span><span class="chip">Python</span>
-          <span class="chip">VLM</span><span class="chip">Behavior Cloning</span><span class="chip">Computer Vision</span>
-        </div>
+        <div class="track-icon">🗄️</div>
+        <div class="track-name">Data Engineering</div>
+        <div class="track-line">Validation, ETL support, BigQuery workflows, and production data quality enforcement.</div>
+        <div class="track-stack"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">BigQuery</span><span class="chip">Data Validation</span></div>
       </div>
-
       <div class="track">
-        <div class="track-icon">⚙️</div>
-        <div class="track-name">Machine Learning</div>
-        <div class="track-line">
-          Applied ML work spanning computer vision, model evaluation, inference tradeoffs, and deployment workflows using Docker and GCP Cloud Run.
-        </div>
-        <div class="track-stack">
-          <span class="chip">PyTorch</span><span class="chip">FastAPI</span>
-          <span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Cloud Run</span>
-        </div>
+        <div class="track-icon">📊</div>
+        <div class="track-name">Data Science / ML Evaluation</div>
+        <div class="track-line">Model evaluation workflows, class imbalance analysis, metrics design, and structured experiment interpretation.</div>
+        <div class="track-stack"><span class="chip">Scikit-learn</span><span class="chip">F1-score</span><span class="chip">Error Analysis</span><span class="chip">Model Evaluation</span></div>
       </div>
-
       <div class="track">
-        <div class="track-icon">🔧</div>
-        <div class="track-name">AI Software Engineering</div>
-        <div class="track-line">
-          Software engineering experience across FastAPI backends, GCP workflows, production data validation, monitoring, and automation.
-        </div>
-        <div class="track-stack">
-          <span class="chip">FastAPI</span><span class="chip">Go</span>
-          <span class="chip">SQL</span><span class="chip">BigQuery</span><span class="chip">Pub/Sub</span>
-        </div>
+        <div class="track-icon">📡</div>
+        <div class="track-name">Monitoring & Reliability</div>
+        <div class="track-line">Anomaly detection, regression detection, reporting automation, and monitoring standards that improve downstream reliability.</div>
+        <div class="track-stack"><span class="chip">Monitoring</span><span class="chip">Logging</span><span class="chip">Anomaly Detection</span><span class="chip">Reporting</span></div>
       </div>
     </div>
   </div>
@@ -1495,10 +1343,10 @@ footer{
         <div class="exp-right">
           <div class="exp-role">Machine Learning Engineer Intern</div>
           <ul class="exp-bullets">
-            <li>Fine-grained multi-class medical image classifier on <strong>50K+ images, 22 disease categories</strong> - 93% accuracy.</li>
-            <li>Architecture ablation (ResNet18 vs ResNet50): selected ResNet18 for <strong>5x faster inference</strong> without minority-class precision loss.</li>
-            <li>Hierarchical classification + targeted oversampling: <strong>+30% minority-class F1</strong>, reducing false-negative risk in clinically sensitive categories.</li>
-            <li>Containerized model with Docker; deployed scalable inference API on <strong>GCP Cloud Run</strong> with Cloud Storage workflow integration.</li>
+            <li>Worked with <strong>50K+ medical image records</strong> to support structured model training and evaluation across 22 disease categories.</li>
+            <li>Built evaluation workflows for fine-grained image classification using accuracy, F1-score, minority-class performance, and confusion-matrix analysis.</li>
+            <li>Compared ResNet18 and ResNet50, selecting ResNet18 for <strong>5x faster inference</strong> while preserving strong classification performance.</li>
+            <li>Containerized model serving with Docker and deployed inference workflows on GCP Cloud Run with Cloud Storage integration.</li>
           </ul>
         </div>
       </div>
@@ -1512,9 +1360,10 @@ footer{
         <div class="exp-right">
           <div class="exp-role">Software Engineer</div>
           <ul class="exp-bullets">
-            <li>Automated data validation and anomaly detection across <strong>800+ production scenarios</strong>; reduced manual inspection by 80%.</li>
-            <li>Built Python monitoring system for regression detection; cut reporting turnaround by <strong>78%</strong>.</li>
-            <li>Optimized GCP data retrieval workflows to improve downstream reliability for analytics and ML pipelines.</li>
+            <li>Engineered production-grade data validation and regression detection systems across <strong>800+ business scenarios</strong>, improving reliability for downstream analytics workflows.</li>
+            <li>Optimized GCP-based data retrieval workflows, reducing query latency by <strong>15%</strong>.</li>
+            <li>Reduced manual QA workload by <strong>80%</strong> through automated validation and anomaly detection workflows.</li>
+            <li>Reduced reporting latency from <strong>1.5 hours to 20 minutes</strong> across critical reporting workflows.</li>
           </ul>
         </div>
       </div>
@@ -1531,47 +1380,20 @@ footer{
     <div class="foundation-grid rv">
       <div class="skill-clusters">
         <div class="cluster">
-          <span class="cluster-label">Languages</span>
-          <div class="cluster-chips">
-            <span class="chip">Python</span><span class="chip">Go</span><span class="chip">SQL</span>
-          </div>
+          <span class="cluster-label">Data</span>
+          <div class="cluster-chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">BigQuery</span><span class="chip">ETL</span><span class="chip">Data Validation</span></div>
         </div>
         <div class="cluster">
-          <span class="cluster-label">ML / AI</span>
-          <div class="cluster-chips">
-            <span class="chip">PyTorch</span><span class="chip">ResNet / CNN</span>
-            <span class="chip">Transformers</span><span class="chip">Behavior Cloning</span>
-            <span class="chip">LLM Apps</span><span class="chip">VLM</span>
-            <span class="chip">Grad-CAM</span>
-          </div>
+          <span class="cluster-label">Quality</span>
+          <div class="cluster-chips"><span class="chip">Data Validation</span><span class="chip">Anomaly Detection</span><span class="chip">Monitoring</span><span class="chip">Reporting Automation</span></div>
         </div>
         <div class="cluster">
-          <span class="cluster-label">Robotics</span>
-          <div class="cluster-chips">
-            <span class="chip">ROS</span><span class="chip">Computer Vision</span>
-            <span class="chip">Safety-Aware Control</span>
-          </div>
+          <span class="cluster-label">Cloud</span>
+          <div class="cluster-chips"><span class="chip">GCP</span><span class="chip">Cloud Storage</span><span class="chip">Cloud Run</span><span class="chip">BigQuery</span></div>
         </div>
         <div class="cluster">
-          <span class="cluster-label">Infrastructure</span>
-          <div class="cluster-chips">
-            <span class="chip">FastAPI</span><span class="chip">Docker</span>
-            <span class="chip">GCP Cloud Run</span><span class="chip">BigQuery</span>
-            <span class="chip">Cloud Storage</span><span class="chip">Pub/Sub</span>
-          </div>
-        </div>
-        <div class="cluster">
-          <span class="cluster-label">Frontend</span>
-          <div class="cluster-chips">
-            <span class="chip">Next.js</span>
-          </div>
-        </div>
-        <div class="cluster">
-          <span class="cluster-label">Methods</span>
-          <div class="cluster-chips">
-            <span class="chip">Ablation Studies</span><span class="chip">Data Validation</span>
-            <span class="chip">Monitoring</span><span class="chip">Anomaly Detection</span>
-          </div>
+          <span class="cluster-label">ML Eval</span>
+          <div class="cluster-chips"><span class="chip">Scikit-learn</span><span class="chip">Model Evaluation</span><span class="chip">F1-score</span><span class="chip">Error Analysis</span></div>
         </div>
       </div>
 
@@ -1584,12 +1406,12 @@ footer{
         <div class="edu-card">
           <div class="edu-deg">B.S. Data Science</div>
           <div class="edu-school">Soochow University</div>
-          <div class="edu-meta">Sept 2017 – Jun 2021 · <span>GPA 3.7 / 4.0</span> · Taipei, Taiwan</div>
+          <div class="edu-meta">Sept 2017 – Jun 2021 · <span>GPA 3.7 / 4.0</span> · Taiwan</div>
         </div>
-        <div class="edu-card" style="border-top:1px solid var(--line);">
-          <div class="edu-deg" style="color:var(--amber);">Award</div>
-          <div class="edu-school">2nd Place — Data Science Hackathon</div>
-          <div class="edu-meta">Clustering-based job recommendation system</div>
+        <div class="edu-card">
+          <div class="edu-deg">Location</div>
+          <div class="edu-school">Colorado, USA</div>
+          <div class="edu-meta">Open to full-time roles beginning May 2026.</div>
         </div>
       </div>
 
@@ -1604,25 +1426,13 @@ footer{
       <div>
         <div class="lbl">Let's Talk</div>
         <div class="contact-headline">Open to <span>full-time</span> roles.<br>Starting May 2026.</div>
-        <div class="contact-sub">Robotics · Machine Learning · AI Software Engineering</div>
+        <div class="contact-sub">Data Engineering · Data Science · Analytics Systems</div>
       </div>
       <div class="contact-links">
-        <a href="mailto:ihwu8559@colorado.edu" class="contact-link">
-          <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3.5" width="13" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 4.5l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.2"/></svg>
-          Email
-        </a>
-        <a href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M4 6.5v5M4 4v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M7.5 11.5V8.5c0-1 .7-2 2-2s2 .8 2 2v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 0 0-2.21 13.64c.35.06.48-.15.48-.34v-1.26c-1.95.42-2.36-.94-2.36-.94-.32-.81-.78-1.03-.78-1.03-.64-.43.05-.42.05-.42.7.05 1.07.72 1.07.72.62 1.07 1.64.76 2.04.58.06-.45.24-.76.44-.93-1.56-.18-3.2-.78-3.2-3.47 0-.77.27-1.39.72-1.88-.07-.18-.31-.89.07-1.86 0 0 .59-.19 1.93.72A6.7 6.7 0 0 1 8 4.8c.6 0 1.2.08 1.76.24 1.34-.91 1.93-.72 1.93-.72.38.97.14 1.68.07 1.86.45.49.72 1.11.72 1.88 0 2.69-1.64 3.29-3.2 3.47.25.22.48.65.48 1.3v1.94c0 .19.13.4.48.34A7 7 0 0 0 8 1z" stroke="currentColor" stroke-width="1.1"/></svg>
-          GitHub
-        </a>
-        <a href="./files/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="currentColor" stroke-width="1.2"/><path d="M10 2v3h3" stroke="currentColor" stroke-width="1.2"/><path d="M6 8h4M6 11h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          Resume
-        </a>
+        <a href="mailto:ihwu8559@colorado.edu" class="contact-link">Email</a>
+        <a href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+        <a href="./files/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-link">Resume</a>
       </div>
     </div>
   </div>
@@ -1631,7 +1441,7 @@ footer{
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="z">
   <span class="footer-l">© 2026 Yuni Wu</span>
-  <span class="footer-r mono-xs">AI Systems Engineer · Colorado, USA</span>
+  <span class="footer-r mono-xs">Data Engineer & Data Scientist · Colorado, USA</span>
 </footer>
 
 <!-- ═══════════ JS ═══════════ -->
