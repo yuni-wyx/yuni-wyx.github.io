@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuni Wu — Machine Learning Engineer | AI Systems</title>
+<meta name="description" content="Yuni Wu is a machine learning engineer and AI systems builder focused on computer vision, LLM applications, robotics, cloud deployment, and production data workflows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/icon.png">
+<meta name="theme-color" content="#060810">
+<style>
+:root{
+  --bg0:#060810;
+  --bg1:#090c15;
+  --bg2:#0c1018;
+  --bg3:#101622;
+  --line:rgba(255,255,255,.075);
+  --line2:rgba(255,255,255,.045);
+  --cyan:#4dd9c0;
+  --cyan-dim:rgba(77,217,192,.14);
+  --white:#f4f6fa;
+  --gray1:#a5aec2;
+  --gray2:#687086;
+  --gray3:#343b4f;
+  --amber:#f0a832;
+  --ff:'IBM Plex Sans',system-ui,sans-serif;
+  --ffm:'IBM Plex Mono','Courier New',monospace;
+  --r:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:17px;}
+body{
+  background:var(--bg0);
+  color:var(--white);
+  font-family:var(--ff);
+  line-height:1.62;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+#grid-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:
+    linear-gradient(var(--line2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 85% 75% at 50% 8%,black 18%,transparent 78%);
+}
+.z{position:relative;z-index:10;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 44px;}
+.lbl{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  margin-bottom:14px;
+}
+.lbl::before{content:'';width:18px;height:1px;background:var(--cyan);}
+.sec-title{
+  font-size:clamp(30px,4vw,46px);
+  font-weight:600;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  margin-bottom:32px;
+}
+.sec-title span{color:var(--cyan);}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  font-family:var(--ffm);
+  font-size:10px;
+  line-height:1;
+  color:var(--gray1);
+  border:1px solid var(--gray3);
+  background:rgba(255,255,255,.025);
+  border-radius:999px;
+  padding:7px 10px;
+  white-space:nowrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:11px 17px;
+  border-radius:var(--r);
+  font-family:var(--ffm);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease,color .18s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--cyan);color:#06100f;border:1px solid var(--cyan);font-weight:500;}
+.btn-outline{border:1px solid var(--line);color:var(--gray1);background:rgba(255,255,255,.02);}
+.btn-outline:hover{border-color:rgba(77,217,192,.5);color:var(--cyan);background:var(--cyan-dim);}
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:500;
+  background:rgba(6,8,16,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 44px;
+}
+.nav-logo{font-family:var(--ffm);font-size:13px;font-weight:500;letter-spacing:.06em;}
+.nav-logo span{color:var(--cyan);}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{
+  display:block;
+  height:54px;
+  line-height:54px;
+  padding:0 14px;
+  border-left:1px solid var(--line);
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gray1);
+}
+.nav-links li:last-child a{border-right:1px solid var(--line);}
+.nav-links a:hover{color:var(--cyan);background:var(--cyan-dim);}
+#hero{
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  padding:112px 0 56px;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';
+  position:absolute;
+  top:-260px;
+  left:-120px;
+  width:760px;
+  height:760px;
+  background:radial-gradient(circle,rgba(77,217,192,.07),transparent 65%);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 330px;
+  gap:58px;
+  align-items:start;
+}
+.status{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:24px;
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gray1);
+}
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 0 6px rgba(77,217,192,.09);
+}
+.hero-name{
+  font-size:clamp(56px,8vw,96px);
+  font-weight:600;
+  letter-spacing:-.04em;
+  line-height:.95;
+  margin-bottom:18px;
+}
+.hero-title{
+  font-size:clamp(24px,3vw,36px);
+  font-weight:500;
+  letter-spacing:-.025em;
+  margin-bottom:18px;
+  color:var(--white);
+}
+.hero-title span{color:var(--cyan);}
+.hero-subtitle{
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.5;
+  color:var(--gray1);
+  max-width:720px;
+  margin-bottom:18px;
+}
+.hero-body{
+  font-size:16px;
+  color:var(--gray1);
+  max-width:760px;
+  margin-bottom:26px;
+}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:11px;}
+.profile-panel{
+  background:linear-gradient(180deg,rgba(77,217,192,.04),rgba(255,255,255,.015)),var(--bg2);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.panel-head{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:10px 15px;
+  border-bottom:1px solid var(--line);
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.1em;
+  color:var(--gray2);
+}
+.dot{width:8px;height:8px;border-radius:50%;}
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.panel-body{padding:17px;}
+.panel-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line2);
+  font-family:var(--ffm);
+  font-size:11px;
+}
+.panel-row:last-child{border-bottom:0;}
+.panel-key{color:var(--gray2);}
+.panel-val{color:var(--white);text-align:right;}
+.panel-val.cyan{color:var(--cyan);}
+.metrics{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(9,12,21,.82);
+}
+.metrics-grid{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 44px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+.metric{
+  padding:25px 22px;
+  border-right:1px solid var(--line);
+}
+.metric:first-child{padding-left:0;}
+.metric:last-child{border-right:0;}
+.metric-n{display:block;font-family:var(--ffm);font-size:30px;line-height:1;color:var(--cyan);margin-bottom:8px;}
+.metric-l{display:block;font-size:13px;line-height:1.35;color:var(--gray2);}
+section{padding:72px 0;border-bottom:1px solid var(--line);}
+.exp-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+.exp-item{display:grid;grid-template-columns:260px 1fr;background:var(--bg1);}
+.exp-left{padding:28px 26px;border-right:1px solid var(--line);}
+.exp-period{font-family:var(--ffm);font-size:10px;letter-spacing:.12em;color:var(--cyan);margin-bottom:8px;text-transform:uppercase;}
+.exp-company{font-size:16px;font-weight:600;margin-bottom:4px;}
+.exp-role-side{font-size:13px;color:var(--gray2);}
+.exp-right{padding:28px 34px;}
+.exp-role{font-size:21px;font-weight:600;letter-spacing:-.015em;margin-bottom:12px;}
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:8px;}
+ul.clean li{
+  position:relative;
+  padding-left:17px;
+  color:var(--gray1);
+  font-size:15.5px;
+  line-height:1.68;
+}
+ul.clean li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:.78em;
+  width:5px;
+  height:1px;
+  background:var(--cyan);
+}
+ul.clean strong{color:var(--white);font-weight:500;}
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+.project-card{background:var(--bg1);padding:30px;display:flex;flex-direction:column;gap:12px;min-height:380px;}
+.project-card:hover{background:var(--bg2);}
+.project-top{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.project-kicker{font-family:var(--ffm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);}
+.project-title{font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.2;}
+.project-desc{font-size:15.5px;color:var(--gray1);line-height:1.68;}
+.project-card .clean{margin:2px 0 8px;}
+.project-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:6px;}
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.skill-group{border:1px solid var(--line);background:var(--bg1);border-radius:var(--r);padding:22px;}
+.skill-title{font-family:var(--ffm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;}
+.skill-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.contact-card{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(77,217,192,.08),rgba(255,255,255,.015) 48%,rgba(255,255,255,.02)),var(--bg1);
+  border-radius:var(--r);
+  padding:38px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:32px;
+}
+.contact-title{font-size:clamp(26px,3.2vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.15;margin-bottom:10px;}
+.contact-title span{color:var(--cyan);}
+.contact-sub{color:var(--gray1);font-size:16px;}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;}
+footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;color:var(--gray2);font-family:var(--ffm);font-size:11px;}
+@media(max-width:940px){
+  .wrap,.nav-inner{padding:0 24px;}
+  .hero-grid{grid-template-columns:1fr;gap:34px;}
+  .profile-panel{max-width:520px;}
+  .metrics-grid{padding:0 24px;grid-template-columns:repeat(2,1fr);}
+  .metric{border-bottom:1px solid var(--line);}
+  .metric:nth-child(2n){border-right:0;}
+  .metric:last-child{grid-column:1/-1;border-bottom:0;}
+  .exp-item{grid-template-columns:1fr;}
+  .exp-left{border-right:0;border-bottom:1px solid var(--line);padding:22px 24px;}
+  .exp-right{padding:24px;}
+  .project-grid,.skills-grid{grid-template-columns:1fr;}
+  .contact-card{flex-direction:column;align-items:flex-start;}
+  .contact-links{justify-content:flex-start;}
+  .nav-links{display:none;}
+}
+@media(max-width:620px){
+  html{font-size:15px;}
+  .wrap,.nav-inner{padding:0 20px;}
+  #hero{min-height:auto;padding:92px 0 42px;}
+  section{padding:54px 0;}
+  .hero-name{font-size:54px;}
+  .hero-title{font-size:25px;}
+  .hero-subtitle{font-size:18px;}
+  .hero-body{font-size:15px;}
+  .metrics-grid{grid-template-columns:1fr;padding:0 20px;}
+  .metric,.metric:first-child{padding:22px 0;border-right:0;border-bottom:1px solid var(--line);}
+  .metric:last-child{grid-column:auto;border-bottom:0;}
+  .project-card{padding:24px;min-height:auto;}
+  .contact-card{padding:26px;}
+  .btn{width:100%;}
+  footer{padding:20px;flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div id="grid-bg"></div>
+
+<nav class="z">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">YW<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="hero" class="z">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="status"><span class="status-dot"></span><span>Open to full-time roles · May 2026</span></div>
+        <h1 class="hero-name">Yuni Wu</h1>
+        <div class="hero-title">Machine Learning Engineer <span>·</span> AI Systems</div>
+        <p class="hero-subtitle">I build production-ready AI systems across computer vision, LLM applications, robotics, and cloud infrastructure.</p>
+        <p class="hero-body">MS Data Science student at University of Colorado Boulder, graduating May 2026. I focus on building deployable ML and AI systems with measurable impact — from medical image classifiers and LLM-powered applications to robotics navigation and production data validation workflows.</p>
+        <div class="hero-chips">
+          <span class="chip">Python</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">Docker</span>
+          <span class="chip">GCP Cloud Run</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">LLM Applications</span>
+          <span class="chip">ROS</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./files/resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+          <a class="btn btn-outline" href="mailto:ihwu8559@colorado.edu">Email Me</a>
+          <a class="btn btn-outline" href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="profile-panel" aria-label="Profile summary">
+        <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span style="margin-left:6px;">profile.json</span></div>
+        <div class="panel-body">
+          <div class="panel-row"><span class="panel-key">location</span><span class="panel-val">Colorado, USA</span></div>
+          <div class="panel-row"><span class="panel-key">degree</span><span class="panel-val cyan">MS Data Science</span></div>
+          <div class="panel-row"><span class="panel-key">graduation</span><span class="panel-val">May 2026</span></div>
+          <div class="panel-row"><span class="panel-key">focus</span><span class="panel-val cyan">ML + AI Systems</span></div>
+          <div class="panel-row"><span class="panel-key">stack</span><span class="panel-val">Python, PyTorch, FastAPI, GCP</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<div class="metrics z" aria-label="Impact metrics">
+  <div class="metrics-grid">
+    <div class="metric"><span class="metric-n">93%</span><span class="metric-l">NailAI classification accuracy</span></div>
+    <div class="metric"><span class="metric-n">50K+</span><span class="metric-l">medical image samples</span></div>
+    <div class="metric"><span class="metric-n">+30%</span><span class="metric-l">minority-class F1 improvement</span></div>
+    <div class="metric"><span class="metric-n">800+</span><span class="metric-l">production scenarios supported</span></div>
+    <div class="metric"><span class="metric-n">80%</span><span class="metric-l">manual inspection reduction</span></div>
+  </div>
+</div>
+
+<section id="experience" class="z">
+  <div class="wrap">
+    <div class="lbl">Work Experience</div>
+    <h2 class="sec-title">Production <span>impact</span></h2>
+    <div class="exp-list">
+      <article class="exp-item">
+        <div class="exp-left">
+          <div class="exp-period">May 2025 – Aug 2025</div>
+          <div class="exp-company">MyEdMaster LLC</div>
+          <div class="exp-role-side">Machine Learning Engineer Intern</div>
+        </div>
+        <div class="exp-right">
+          <h3 class="exp-role">Machine Learning Engineer Intern</h3>
+          <ul class="clean">
+            <li>Built fine-grained medical image classification system across <strong>50K+ images</strong> and <strong>22 disease categories</strong>, achieving <strong>93% accuracy</strong> and <strong>0.92 F1-score</strong>.</li>
+            <li>Compared ResNet18 and ResNet50 architectures, selecting ResNet18 for <strong>5x faster inference</strong> while preserving minority-class precision.</li>
+            <li>Improved minority-class F1 by <strong>30%</strong> using hierarchical classification and targeted oversampling.</li>
+            <li>Containerized model serving with Docker and deployed inference workflows on <strong>GCP Cloud Run</strong> with Cloud Storage integration.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-left">
+          <div class="exp-period">Jun 2021 – Aug 2022</div>
+          <div class="exp-company">Shopee Co. Ltd.</div>
+          <div class="exp-role-side">Software Engineer</div>
+        </div>
+        <div class="exp-right">
+          <h3 class="exp-role">Software Engineer</h3>
+          <ul class="clean">
+            <li>Built automated data validation and anomaly detection workflows across <strong>800+ production scenarios</strong>, reducing manual inspection by <strong>80%</strong>.</li>
+            <li>Developed Python and SQL monitoring workflows for regression detection, reducing reporting turnaround by <strong>78%</strong>.</li>
+            <li>Improved GCP-based data retrieval workflows to support more reliable downstream analytics and ML-related processes.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="z">
+  <div class="wrap">
+    <div class="lbl">Selected Projects</div>
+    <h2 class="sec-title">Applied AI <span>systems</span></h2>
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-top"><span class="project-kicker">Computer Vision · PyTorch · GCP Cloud Run</span></div>
+        <h3 class="project-title">NailAI — Medical Image Classifier</h3>
+        <p class="project-desc">Fine-grained medical image classification system for 22 nail disease categories, balancing model quality, minority-class performance, explainability, and deployment constraints.</p>
+        <ul class="clean">
+          <li><strong>50K+</strong> images across <strong>22</strong> disease categories</li>
+          <li><strong>93%</strong> accuracy and <strong>0.92</strong> F1-score</li>
+          <li><strong>30%</strong> minority-class F1 improvement</li>
+          <li><strong>5x</strong> faster inference with ResNet18</li>
+          <li>Grad-CAM explainability and Cloud Run deployment</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-outline" href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer">Demo</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top"><span class="project-kicker">LLM Application · FastAPI · Cloud Run</span></div>
+        <h3 class="project-title">EmotionFlow — LLM Recommendation System</h3>
+        <p class="project-desc">Real-time emotional recommendation system using conversational context, structured prompt logic, FastAPI backend orchestration, and Cloud Run deployment.</p>
+        <ul class="clean">
+          <li>LLM-powered recommendation workflow</li>
+          <li>FastAPI backend service</li>
+          <li>Prompt design and contextual feature extraction</li>
+          <li>Cloud Run deployment</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-outline" href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer">Demo</a>
+          <a class="btn btn-outline" href="https://github.com/yuni-wyx/EmotionFlow" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top"><span class="project-kicker">Robotics · ROS · Behavior Cloning</span></div>
+        <h3 class="project-title">Go1 Autonomous Navigation</h3>
+        <p class="project-desc">Vision-based quadruped navigation project using Unitree Go1, ROS workflows, ResNet visual encoding, behavior cloning, and residual diagnostics for perception-to-action evaluation.</p>
+        <ul class="clean">
+          <li>Built image-to-action learning pipeline</li>
+          <li>Used ResNet encoder and behavior cloning</li>
+          <li>Evaluated policy behavior with residual diagnostics</li>
+          <li>Focused on real-world constraints such as latency, stability, and control reliability</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-outline" href="https://yuni-wyx.github.io/go1-autonomous-navigation/" target="_blank" rel="noopener noreferrer">Demo</a>
+          <a class="btn btn-outline" href="https://github.com/yuni-wyx/go1-autonomous-navigation" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top"><span class="project-kicker">FastAPI · Next.js · AI Workflow</span></div>
+        <h3 class="project-title">StockAI — Intelligence Copilot</h3>
+        <p class="project-desc">Full-stack stock research workflow for US and Taiwan markets, covering research, price-move explanation, and watchlist workflows.</p>
+        <ul class="clean">
+          <li>FastAPI backend</li>
+          <li>Next.js frontend</li>
+          <li>Research and watchlist workflows</li>
+          <li>Full-stack AI application structure</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-outline" href="https://yuni-wyx.github.io/StockIntelligenceCopilot/" target="_blank" rel="noopener noreferrer">Demo</a>
+          <a class="btn btn-outline" href="https://github.com/yuni-wyx/StockIntelligenceCopilot" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="z">
+  <div class="wrap">
+    <div class="lbl">Skills</div>
+    <h2 class="sec-title">Technical <span>stack</span></h2>
+    <div class="skills-grid">
+      <div class="skill-group"><div class="skill-title">Languages</div><div class="skill-chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Go</span></div></div>
+      <div class="skill-group"><div class="skill-title">Machine Learning</div><div class="skill-chips"><span class="chip">PyTorch</span><span class="chip">Scikit-learn</span><span class="chip">ResNet</span><span class="chip">CNNs</span><span class="chip">Transformers</span><span class="chip">Model Evaluation</span><span class="chip">F1-score</span><span class="chip">ROC-AUC</span></div></div>
+      <div class="skill-group"><div class="skill-title">AI Applications</div><div class="skill-chips"><span class="chip">LLM APIs</span><span class="chip">Prompt Design</span><span class="chip">RAG</span><span class="chip">Agent Workflows</span><span class="chip">Recommendation Systems</span></div></div>
+      <div class="skill-group"><div class="skill-title">Cloud / Backend</div><div class="skill-chips"><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">GCP Cloud Run</span><span class="chip">Cloud Storage</span><span class="chip">Pub/Sub</span><span class="chip">BigQuery</span><span class="chip">Cloud Build</span></div></div>
+      <div class="skill-group"><div class="skill-title">Robotics</div><div class="skill-chips"><span class="chip">ROS</span><span class="chip">Unitree Go1</span><span class="chip">Behavior Cloning</span><span class="chip">Computer Vision</span><span class="chip">Residual Diagnostics</span></div></div>
+      <div class="skill-group"><div class="skill-title">Data Systems</div><div class="skill-chips"><span class="chip">ETL</span><span class="chip">Data Validation</span><span class="chip">Monitoring</span><span class="chip">Anomaly Detection</span><span class="chip">Regression Detection</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="z">
+  <div class="wrap">
+    <div class="contact-card">
+      <div>
+        <div class="lbl">Contact</div>
+        <h2 class="contact-title">Open to full-time roles <span>starting May 2026.</span></h2>
+        <p class="contact-sub">Machine Learning Engineering · AI Software Engineering · Applied AI Systems</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:ihwu8559@colorado.edu">Email</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn-outline" href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn btn-outline" href="./files/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="z">
+  <span>© 2026 Yuni Wu</span>
+  <span>Machine Learning Engineer · AI Systems</span>
+</footer>
+</body>
+</html>
