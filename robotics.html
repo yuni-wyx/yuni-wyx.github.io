@@ -562,15 +562,15 @@ nav{
   align-self:stretch;
 }
 .proj-stack{
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-rows:repeat(2,minmax(0,1fr));
   gap:1px;
   background:transparent;
   align-self:stretch;
   height:100%;
 }
 .proj-stack > .proj-card{
-  flex:1 1 0;
+  height:100%;
   min-height:0;
 }
 .proj-card{
@@ -1081,7 +1081,7 @@ footer{
   .proj-card.featured .proj-feature-grid,
   .proj-feature-grid,
   .proj-feature-copy{min-height:auto;height:auto;}
-  .proj-stack{height:auto;}
+  .proj-stack{display:flex;flex-direction:column;height:auto;}
   .proj-wide-grid{grid-template-columns:1fr;}
   .tracks-grid{grid-template-columns:1fr;}
   .exp-item{grid-template-columns:1fr;}
@@ -1103,7 +1103,7 @@ footer{
   .hero-actions{flex-wrap:wrap;}
   .proj-layout{grid-template-columns:1fr;}
   .proj-stack{min-height:auto;height:auto;}
-  .proj-stack > .proj-card{flex:initial;min-height:auto;}
+  .proj-stack > .proj-card{height:auto;flex:initial;min-height:auto;}
   .proj-card.featured,
   .proj-feature-grid,
   .proj-feature-copy{min-height:auto;height:auto;}
@@ -1303,7 +1303,7 @@ footer{
 <section id="projects" class="z">
   <div class="wrap" style="padding-top:96px;padding-bottom:96px;">
     <div class="lbl rv">Featured Projects</div>
-    <h2 class="sec-title rv">Systems I've <span>shipped</span></h2>
+    <h2 class="sec-title rv">Portfolio</h2>
 
     <div class="proj-layout rv">
       <article class="proj-card featured project-primary">
@@ -1311,12 +1311,11 @@ footer{
           <div class="proj-index"><span class="mono-xs">01 / ROBOTICS</span></div>
           <div class="proj-domain">Robotics • Computer Vision • ROS</div>
           <div class="proj-title">Go1 Autonomous Navigation</div>
-          <div class="proj-desc">Vision-based quadruped navigation project combining behavior cloning, ResNet visual encoding, ROS workflows, and residual diagnostics for real robot control constraints.</div>
+          <div class="proj-desc">Vision-based navigation system that turns robot camera observations into evaluated control predictions for a Unitree Go1 workflow.</div>
           <div class="proj-brief">
-            <div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Map visual observations to robot control actions while accounting for latency, stability, and action-level reliability.</div></div>
-            <div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A <strong>ResNet-based behavior cloning pipeline</strong> with ROS-based workflows, supervised state-action datasets, and velocity-wise residual diagnostics.</div></div>
-            <div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Achieved <strong>0.11 cross-validated MAE</strong> and <strong>0.62 R²</strong> while identifying deployment-relevant stability constraints such as near-zero lateral bias and rotational variance under covariate shift.</div></div>
-            <div class="proj-brief-row"><div class="proj-brief-label">Evaluation</div><div class="proj-brief-text">Used velocity-wise residual diagnostics and trajectory-level analysis to understand policy behavior beyond aggregate loss.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Robot navigation policies need more than aggregate accuracy; control outputs must be checked for stability, bias, and trajectory-level failure modes.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A <strong>ResNet-based behavior cloning pipeline</strong> that converts ROS telemetry into supervised state-action datasets and evaluates velocity-wise residuals.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Achieved <strong>0.11 cross-validated MAE</strong> and <strong>0.62 R²</strong>, while surfacing near-zero lateral bias and rotational variance under covariate shift.</div></div>
           </div>
           <div class="go1-visual" aria-hidden="true"><div class="go1-grid"></div><div class="go1-orbit"></div><div class="go1-bot"><div class="go1-node n1"></div><div class="go1-node n2"></div><div class="go1-node n3"></div><div class="go1-back"></div><div class="go1-body"></div><div class="go1-neck"></div><div class="go1-head"></div><div class="go1-joint j1"></div><div class="go1-joint j2"></div><div class="go1-joint j3"></div><div class="go1-joint j4"></div><div class="go1-leg l1"></div><div class="go1-leg l2"></div><div class="go1-leg l3"></div><div class="go1-leg l4"></div></div><div class="go1-caption">unitree go1 silhouette</div></div>
           <div class="proj-stats"><div class="pstat"><span class="pstat-n">0.11</span><span class="pstat-l">MAE</span></div><div class="pstat"><span class="pstat-n">0.62</span><span class="pstat-l">R²</span></div><div class="pstat"><span class="pstat-n">≈0</span><span class="pstat-l">Lateral Bias</span></div></div>
@@ -1325,13 +1324,13 @@ footer{
         </div></div>
       </article>
       <div class="proj-stack">
-        <article class="proj-card"><div class="proj-index"><span class="mono-xs">02 / COMPUTER VISION</span></div><div class="proj-domain">Computer Vision • Deployment</div><div class="proj-title">NailAI — Medical Image Classifier</div><div class="proj-desc">Secondary computer vision and deployment project showing fine-grained image classification, model evaluation, and Cloud Run inference workflows.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Relevance</div><div class="proj-brief-text">Shows applied computer vision, model evaluation, and deployment discipline that transfer to perception-heavy robotics systems.</div></div></div><div class="proj-actions"><a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article>
-        <article class="proj-card"><div class="proj-index"><span class="mono-xs">03 / APPLIED AI</span></div><div class="proj-domain">FastAPI • Cloud Run • Prompt Design</div><div class="proj-title">EmotionFlow — LLM Recommendation System</div><div class="proj-desc">Secondary applied AI and backend project showing FastAPI service orchestration, prompt design, and deployable recommendation workflows.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Relevance</div><div class="proj-brief-text">Shows backend orchestration and real-time AI application design, useful for robotics systems that combine perception, reasoning, and control services.</div></div></div><div class="proj-actions"><a href="https://github.com/yuni-wyx/EmotionFlow" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a><a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article>
+        <article class="proj-card"><div class="proj-index"><span class="mono-xs">02 / COMPUTER VISION</span></div><div class="proj-domain">Computer Vision • Deployment</div><div class="proj-title">NailAI — Medical Image Classifier</div><div class="proj-desc">Image classification service for fine-grained nail disease recognition, built to balance model quality, minority-class behavior, and deployable inference speed.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Visually similar classes and imbalanced labels made aggregate accuracy insufficient for judging model usefulness.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A ResNet evaluation and serving workflow with class-level metrics, deployment tradeoff analysis, and Cloud Run inference.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Reached <strong>0.92 F1-score</strong>, improved minority-class F1 by <strong>30%</strong>, and selected ResNet18 for <strong>5x faster inference</strong>.</div></div></div><div class="proj-actions"><a href="https://nailai-backend-299381123286.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article>
+        <article class="proj-card"><div class="proj-index"><span class="mono-xs">03 / APPLIED AI</span></div><div class="proj-domain">FastAPI • Cloud Run • Prompt Design</div><div class="proj-title">EmotionFlow — LLM Recommendation System</div><div class="proj-desc">Real-time recommendation application that converts conversational context into structured LLM outputs with feedback-driven quality checks.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Recommendations needed to respond to emotional context without drifting into unsupported or low-quality generated responses.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A FastAPI-backed LLM workflow with prompt logic, contextual feature extraction, explicit feedback signals, and cloud deployment.</div></div><div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Achieved <strong>57% recommendation acceptance</strong> and reduced hallucination by <strong>34%</strong> through iterative feedback and evaluation.</div></div></div><div class="proj-actions"><a href="https://github.com/yuni-wyx/EmotionFlow" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a><a href="https://emotionflow-40672525442.us-central1.run.app/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Demo</a></div></article>
       </div>
     </div>
 
     <div style="background:var(--line);margin-top:1px;border-radius:0 0 4px 4px;overflow:hidden;">
-      <article class="proj-card proj-wide"><div class="proj-wide-grid"><div><div class="proj-index"><span class="mono-xs">04 / FULL-STACK AI</span></div><div class="proj-domain">FastAPI • Next.js • Research Workflow</div><div class="proj-title">StockAI — Intelligence Copilot</div><div class="proj-desc">Secondary full-stack AI project covering stock research, price-move explanation, and watchlist workflows for US and Taiwan markets.</div><div class="proj-actions"><a href="https://yuni-wyx.github.io/StockIntelligenceCopilot/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Project</a><a href="https://github.com/yuni-wyx/StockIntelligenceCopilot" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a></div></div></div></article>
+      <article class="proj-card proj-wide"><div class="proj-wide-grid"><div><div class="proj-index"><span class="mono-xs">04 / FULL-STACK AI</span></div><div class="proj-domain">FastAPI • Next.js • Research Workflow</div><div class="proj-title">StockAI — Intelligence Copilot</div><div class="proj-desc">Research workflow application for market monitoring, price-move explanation, and watchlist review across US and Taiwan equities.</div><div class="proj-brief"><div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A full-stack AI workflow with FastAPI services, a Next.js interface, and project pages that organize research outputs for repeat use.</div></div></div><div class="proj-actions"><a href="https://yuni-wyx.github.io/StockIntelligenceCopilot/" target="_blank" rel="noopener noreferrer" class="proj-cta">View Project</a><a href="https://github.com/yuni-wyx/StockIntelligenceCopilot" target="_blank" rel="noopener noreferrer" class="proj-cta">GitHub</a></div></div></div></article>
     </div>
   </div>
 </section>
@@ -1438,7 +1437,7 @@ footer{
         <div class="edu-card">
           <div class="edu-deg">M.S. Data Science</div>
           <div class="edu-school">University of Colorado Boulder</div>
-          <div class="edu-meta">Aug 2024 – May 2026 · <span>GPA 3.81 / 4.0</span></div>
+          <div class="edu-meta">Aug 2024 – May 2026 · <span>GPA 3.76 / 4.0</span></div>
         </div>
         <div class="edu-card">
           <div class="edu-deg">B.S. Data Science</div>
