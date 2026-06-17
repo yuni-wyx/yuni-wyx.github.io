@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuni Wu — Machine Learning Engineer | AI Systems</title>
-<meta name="description" content="Yuni Wu is a machine learning engineer and AI systems builder focused on computer vision, LLM applications, robotics, cloud deployment, and production data workflows.">
+<title>Yuni Wu — Portfolio</title>
+<meta name="description" content="Yuni Wu's portfolio featuring applied machine learning, AI software systems, robotics, cloud deployment, and production data workflows.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -299,6 +299,164 @@ ul.clean strong{color:var(--white);font-weight:500;}
 .project-kicker{font-family:var(--ffm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);}
 .project-title{font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.2;}
 .project-desc{font-size:15.5px;color:var(--gray1);line-height:1.68;}
+.go1-visual{
+  position:relative;
+  min-height:148px;
+  margin:4px 0 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(77,217,192,.12), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  overflow:hidden;
+}
+.go1-visual::before{
+  content:'';
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(255,255,255,.04);
+  border-radius:6px;
+}
+.go1-visual::after{
+  content:'GO1';
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.14em;
+  color:var(--gray2);
+}
+.go1-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:24px 24px;
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.55), transparent 85%);
+}
+.go1-orbit{
+  position:absolute;
+  inset:26px 22px 20px;
+  border:1px dashed rgba(77,217,192,.18);
+  border-radius:50%;
+  animation:go1-spin 16s linear infinite;
+}
+.go1-bot{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:106px;
+  height:58px;
+  transform:translate(-50%,-50%);
+}
+.go1-body{
+  position:absolute;
+  left:18px;
+  top:18px;
+  width:62px;
+  height:16px;
+  border:1.5px solid rgba(77,217,192,.82);
+  border-radius:8px 12px 9px 9px;
+  background:rgba(77,217,192,.08);
+  box-shadow:0 0 14px rgba(77,217,192,.10);
+}
+.go1-body::before,
+.go1-body::after{
+  content:'';
+  position:absolute;
+  top:6px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(77,217,192,.78);
+}
+.go1-body::before{left:9px;}
+.go1-body::after{right:9px;}
+.go1-head{
+  position:absolute;
+  right:6px;
+  top:17px;
+  width:20px;
+  height:10px;
+  border:1.5px solid rgba(77,217,192,.78);
+  border-radius:4px 8px 4px 4px;
+  background:rgba(77,217,192,.05);
+}
+.go1-neck{
+  position:absolute;
+  right:22px;
+  top:22px;
+  width:14px;
+  height:2px;
+  background:linear-gradient(90deg, rgba(77,217,192,.62), rgba(77,217,192,.16));
+}
+.go1-back{
+  position:absolute;
+  left:12px;
+  top:14px;
+  width:76px;
+  height:2px;
+  background:linear-gradient(90deg, rgba(104,184,255,.22), rgba(77,217,192,.72), rgba(104,184,255,.22));
+}
+.go1-joint{
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(104,184,255,.82);
+  box-shadow:0 0 8px rgba(104,184,255,.18);
+}
+.go1-joint.j1{left:25px;top:31px;}
+.go1-joint.j2{left:39px;top:31px;}
+.go1-joint.j3{left:61px;top:31px;}
+.go1-joint.j4{left:75px;top:31px;}
+.go1-leg{
+  position:absolute;
+  width:3px;
+  height:22px;
+  background:linear-gradient(180deg, rgba(77,217,192,.82), rgba(77,217,192,.12));
+  transform-origin:top center;
+}
+.go1-leg::after{
+  content:'';
+  position:absolute;
+  left:-5px;
+  bottom:-5px;
+  width:12px;
+  height:3px;
+  border-radius:999px;
+  background:rgba(104,184,255,.52);
+}
+.go1-leg.l1{left:28px;top:32px;transform:rotate(14deg);}
+.go1-leg.l2{left:42px;top:32px;transform:rotate(-10deg);}
+.go1-leg.l3{left:64px;top:32px;transform:rotate(9deg);}
+.go1-leg.l4{left:78px;top:32px;transform:rotate(-14deg);}
+.go1-node{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 12px rgba(77,217,192,.32);
+}
+.go1-node.n1{top:8px;left:46px;}
+.go1-node.n2{bottom:12px;left:12px;}
+.go1-node.n3{bottom:10px;right:10px;}
+.go1-caption{
+  position:absolute;
+  left:14px;
+  bottom:12px;
+  font-family:var(--ffm);
+  font-size:10px;
+  letter-spacing:.1em;
+  color:var(--gray2);
+}
+@keyframes go1-spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
 .project-card .clean{margin:2px 0 8px;}
 .project-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:6px;}
 .skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
@@ -349,6 +507,9 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
   .metric,.metric:first-child{padding:22px 0;border-right:0;border-bottom:1px solid var(--line);}
   .metric:last-child{grid-column:auto;border-bottom:0;}
   .project-card{padding:24px;min-height:auto;}
+  .go1-visual{min-height:124px;margin:2px 0 8px;}
+  .go1-orbit{inset:20px 16px 16px;}
+  .go1-bot{transform:translate(-50%,-50%) scale(.88);}
   .contact-card{padding:26px;}
   .btn{width:100%;}
   footer{padding:20px;flex-direction:column;}
@@ -376,9 +537,9 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
       <div>
         <div class="status"><span class="status-dot"></span><span>Open to full-time roles · May 2026</span></div>
         <h1 class="hero-name">Yuni Wu</h1>
-        <div class="hero-title">Machine Learning Engineer <span>·</span> AI Systems</div>
-        <p class="hero-subtitle">I build production-ready AI systems across computer vision, LLM applications, robotics, and cloud infrastructure.</p>
-        <p class="hero-body">MS Data Science student at University of Colorado Boulder, graduating May 2026. I focus on building deployable ML and AI systems with measurable impact — from medical image classifiers and LLM-powered applications to robotics navigation and production data validation workflows.</p>
+        <div class="hero-title">Yuni Wu <span>·</span> Portfolio</div>
+        <p class="hero-subtitle">I build deployable ML systems, AI software, and robotics-adjacent technical projects.</p>
+        <p class="hero-body">MS Data Science student at University of Colorado Boulder, graduating May 2026. My work spans computer vision, LLM applications, robotics evaluation, and production data workflows.</p>
         <div class="hero-chips">
           <span class="chip">Python</span>
           <span class="chip">PyTorch</span>
@@ -390,7 +551,7 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
           <span class="chip">ROS</span>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="./general_resumes/data_engineer/resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+          <a class="btn btn-primary" href="./general_resumes/machine_learning_engineer/resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
           <a class="btn btn-outline" href="mailto:yunihsuanwu@gmail.com">Email Me</a>
           <a class="btn btn-outline" href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="btn btn-outline" href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -403,7 +564,7 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
           <div class="panel-row"><span class="panel-key">location</span><span class="panel-val">Colorado, USA</span></div>
           <div class="panel-row"><span class="panel-key">degree</span><span class="panel-val cyan">MS Data Science</span></div>
           <div class="panel-row"><span class="panel-key">graduation</span><span class="panel-val">May 2026</span></div>
-          <div class="panel-row"><span class="panel-key">focus</span><span class="panel-val cyan">ML + AI Systems</span></div>
+          <div class="panel-row"><span class="panel-key">focus</span><span class="panel-val cyan">ML Systems + AI Software</span></div>
           <div class="panel-row"><span class="panel-key">stack</span><span class="panel-val">Python, PyTorch, FastAPI, GCP</span></div>
         </div>
       </aside>
@@ -503,6 +664,28 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
         <div class="project-top"><span class="project-kicker">Robotics · ROS · Behavior Cloning</span></div>
         <h3 class="project-title">Go1 Autonomous Navigation</h3>
         <p class="project-desc">Vision-based quadruped navigation project using Unitree Go1, ROS workflows, ResNet visual encoding, behavior cloning, and residual diagnostics for perception-to-action evaluation.</p>
+        <div class="go1-visual" aria-hidden="true">
+          <div class="go1-grid"></div>
+          <div class="go1-orbit"></div>
+          <div class="go1-bot">
+            <div class="go1-node n1"></div>
+            <div class="go1-node n2"></div>
+            <div class="go1-node n3"></div>
+            <div class="go1-back"></div>
+            <div class="go1-body"></div>
+            <div class="go1-neck"></div>
+            <div class="go1-head"></div>
+            <div class="go1-joint j1"></div>
+            <div class="go1-joint j2"></div>
+            <div class="go1-joint j3"></div>
+            <div class="go1-joint j4"></div>
+            <div class="go1-leg l1"></div>
+            <div class="go1-leg l2"></div>
+            <div class="go1-leg l3"></div>
+            <div class="go1-leg l4"></div>
+          </div>
+          <div class="go1-caption">unitree go1 silhouette</div>
+        </div>
         <ul class="clean">
           <li>Built image-to-action learning pipeline</li>
           <li>Used ResNet encoder and behavior cloning</li>
@@ -555,13 +738,13 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
       <div>
         <div class="lbl">Contact</div>
         <h2 class="contact-title">Open to full-time roles <span>starting May 2026.</span></h2>
-        <p class="contact-sub">Machine Learning Engineering · AI Software Engineering · Applied AI Systems</p>
+        <p class="contact-sub">Applied Machine Learning · AI Software Engineering · Robotics Systems</p>
       </div>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:yunihsuanwu@gmail.com">Email</a>
         <a class="btn btn-outline" href="https://www.linkedin.com/in/wih/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="btn btn-outline" href="https://github.com/yuni-wyx" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn btn-outline" href="./general_resumes/data_engineer/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="btn btn-outline" href="./general_resumes/machine_learning_engineer/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
     </div>
   </div>
@@ -569,7 +752,7 @@ footer{padding:22px 44px;display:flex;justify-content:space-between;gap:20px;col
 
 <footer class="z">
   <span>© 2026 Yuni Wu</span>
-  <span>Machine Learning Engineer · AI Systems</span>
+  <span>Yuni Wu Portfolio</span>
 </footer>
 </body>
 </html>

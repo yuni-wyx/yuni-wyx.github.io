@@ -1261,7 +1261,7 @@ footer{
             <div class="hp-row"><span class="hp-key">location</span><span class="hp-val">"Colorado, USA"</span></div>
             <div class="hp-row"><span class="hp-key">degree</span><span class="hp-val cyan">"MS Data Science"</span></div>
             <div class="hp-row"><span class="hp-key">university</span><span class="hp-val">"CU Boulder"</span></div>
-            <div class="hp-row"><span class="hp-key">gpa</span><span class="hp-val cyan">3.81 / 4.0</span></div>
+            <div class="hp-row"><span class="hp-key">gpa</span><span class="hp-val cyan">3.76 / 4.0</span></div>
             <div class="hp-row"><span class="hp-key">graduation</span><span class="hp-val amber">"May 2026"</span></div>
             <div class="hp-row"><span class="hp-key">focus</span><span class="hp-val cyan">"Robotics Software"</span></div>
             <div class="hp-row"><span class="hp-key">stack</span><span class="hp-val">"Python, PyTorch, ROS"</span></div>
@@ -1303,7 +1303,7 @@ footer{
 <section id="projects" class="z">
   <div class="wrap" style="padding-top:96px;padding-bottom:96px;">
     <div class="lbl rv">Featured Projects</div>
-    <h2 class="sec-title rv">Portfolio</h2>
+    <h2 class="sec-title rv">Systems I've <span>shipped</span></h2>
 
     <div class="proj-layout rv">
       <article class="proj-card featured project-primary">
@@ -1311,11 +1311,11 @@ footer{
           <div class="proj-index"><span class="mono-xs">01 / ROBOTICS</span></div>
           <div class="proj-domain">Robotics • Computer Vision • ROS</div>
           <div class="proj-title">Go1 Autonomous Navigation</div>
-          <div class="proj-desc">Vision-based navigation system that turns robot camera observations into evaluated control predictions for a Unitree Go1 workflow.</div>
+          <div class="proj-desc">Vision-based quadruped navigation project combining image observations, imitation learning, ROS workflows, residual diagnostics, and real-world control constraints for Unitree Go1.</div>
           <div class="proj-brief">
-            <div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Robot navigation policies need more than aggregate accuracy; control outputs must be checked for stability, bias, and trajectory-level failure modes.</div></div>
-            <div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A <strong>ResNet-based behavior cloning pipeline</strong> that converts ROS telemetry into supervised state-action datasets and evaluates velocity-wise residuals.</div></div>
-            <div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Achieved <strong>0.11 cross-validated MAE</strong> and <strong>0.62 R²</strong>, while surfacing near-zero lateral bias and rotational variance under covariate shift.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Problem</div><div class="proj-brief-text">Map image observations to robot control commands while accounting for latency, stability, and action-level reliability under real-world constraints.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Built</div><div class="proj-brief-text">A <strong>ResNet-based imitation learning pipeline</strong> with behavior cloning, ROS-based workflows, supervised state-action datasets, and velocity-wise residual diagnostics.</div></div>
+            <div class="proj-brief-row"><div class="proj-brief-label">Outcome</div><div class="proj-brief-text">Achieved <strong>0.11 cross-validated MAE</strong> and <strong>0.62 R²</strong>, while identifying near-zero lateral bias and rotational variance relevant to deployment-oriented robot control.</div></div>
           </div>
           <div class="go1-visual" aria-hidden="true"><div class="go1-grid"></div><div class="go1-orbit"></div><div class="go1-bot"><div class="go1-node n1"></div><div class="go1-node n2"></div><div class="go1-node n3"></div><div class="go1-back"></div><div class="go1-body"></div><div class="go1-neck"></div><div class="go1-head"></div><div class="go1-joint j1"></div><div class="go1-joint j2"></div><div class="go1-joint j3"></div><div class="go1-joint j4"></div><div class="go1-leg l1"></div><div class="go1-leg l2"></div><div class="go1-leg l3"></div><div class="go1-leg l4"></div></div><div class="go1-caption">unitree go1 silhouette</div></div>
           <div class="proj-stats"><div class="pstat"><span class="pstat-n">0.11</span><span class="pstat-l">MAE</span></div><div class="pstat"><span class="pstat-n">0.62</span><span class="pstat-l">R²</span></div><div class="pstat"><span class="pstat-n">≈0</span><span class="pstat-l">Lateral Bias</span></div></div>
