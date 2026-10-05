@@ -18,11 +18,17 @@
       <a class="brand" href="#top" aria-label="Back to top"><span data-config="initials">AC</span><i>.</i></a>
       <nav class="desktop-nav" aria-label="Primary navigation" id="desktopNav"></nav>
       <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-expanded="false" aria-controls="themeMenu">Theme <span>⌄</span></button>
+        <details class="theme-picker">
+          <summary class="theme-toggle">Theme <span>⌄</span></summary>
+          <div class="theme-menu" id="themeMenu">
+            <button type="button" data-theme="midnight" onclick="document.documentElement.dataset.theme='midnight'; this.closest('details').open=false">Midnight</button>
+            <button type="button" data-theme="aurora" onclick="document.documentElement.dataset.theme='aurora'; this.closest('details').open=false">Aurora</button>
+            <button type="button" data-theme="paper" onclick="document.documentElement.dataset.theme='paper'; this.closest('details').open=false">Paper</button>
+          </div>
+        </details>
         <a class="button button-small" data-link="resume" target="_blank" rel="noreferrer">Resume <span>↗</span></a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       </div>
-      <div class="theme-menu" id="themeMenu" hidden></div>
       <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"></nav>
     </header>
 
