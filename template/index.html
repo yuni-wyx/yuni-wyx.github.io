@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A config-driven developer portfolio template for engineers.">
+  <meta name="theme-color" content="#08111f">
+  <title>Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Back to top"><span data-config="initials">AC</span><i>.</i></a>
+      <nav class="desktop-nav" aria-label="Primary navigation" id="desktopNav"></nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-expanded="false" aria-controls="themeMenu">Theme <span>⌄</span></button>
+        <a class="button button-small" data-link="resume" target="_blank" rel="noreferrer">Resume <span>↗</span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+      <div class="theme-menu" id="themeMenu" hidden></div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"></nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section-grid" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span><span data-config="availability">Available for meaningful work</span></p>
+          <h1><span data-config="name">Alex Chen</span><br><em data-config="role">Software Engineer</em></h1>
+          <p class="hero-intro" data-config="tagline">I build reliable software and intelligent systems that turn complex ideas into useful products.</p>
+          <div class="hero-actions">
+            <a class="button" href="#projects">View selected work <span>↓</span></a>
+            <a class="text-link" data-link="email">Let's talk <span>↗</span></a>
+          </div>
+          <div class="hero-meta"><span data-config="location">New York, NY</span><span>•</span><span data-config="focus">Software · AI · Data</span></div>
+        </div>
+        <div class="hero-card" aria-label="Profile summary">
+          <div class="card-top"><span>profile.json</span><span class="dots">•••</span></div>
+          <div class="code-line"><b>01</b><span><i>"name"</i>: <strong data-config="name">"Alex Chen"</strong>,</span></div>
+          <div class="code-line"><b>02</b><span><i>"focus"</i>: <strong data-config="focus">"Software · AI · Data"</strong>,</span></div>
+          <div class="code-line"><b>03</b><span><i>"ships"</i>: [<strong>"products"</strong>,</span></div>
+          <div class="code-line"><b>04</b><span class="indent"><strong>"systems"</strong>, <strong>"experiments"</strong>],</span></div>
+          <div class="code-line"><b>05</b><span><i>"status"</i>: <mark>"open_to_work"</mark></span></div>
+          <div class="card-footer"><span>● live portfolio</span><span>v1.0.0</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="about"><div class="section-heading"><p class="eyebrow">01 / About</p><h2>Thoughtful systems.<br><em>Useful outcomes.</em></h2></div><div class="about-grid"><p class="large-copy" data-config="bio">I enjoy working at the intersection of product thinking and engineering craft. My work spans backend systems, applied AI, and data workflows — always with an eye toward clarity, reliability, and measurable impact.</p><div class="quick-facts" id="quickFacts"></div></div></section>
+      <section class="section" id="experience"><div class="section-heading inline-heading"><div><p class="eyebrow">02 / Experience</p><h2>Where I've<br><em>made an impact.</em></h2></div><span class="section-note">A few chapters in the journey</span></div><div class="timeline" id="experienceList"></div></section>
+      <section class="section" id="projects"><div class="section-heading inline-heading"><div><p class="eyebrow">03 / Selected work</p><h2>Things I've<br><em>built recently.</em></h2></div><span class="section-note">Projects, experiments, and lessons</span></div><div class="project-grid" id="projectList"></div></section>
+      <section class="section split-section" id="skills"><div class="section-heading"><p class="eyebrow">04 / Toolkit</p><h2>Curious by<br><em>default.</em></h2></div><div class="skill-groups" id="skillList"></div></section>
+      <section class="contact-section" id="contact"><p class="eyebrow">05 / Contact</p><h2>Have a good problem?<br><em>Let's talk.</em></h2><div class="contact-row"><p data-config="contactNote">I'm always happy to hear about ambitious products, thoughtful teams, and interesting technical challenges.</p><a class="button" data-link="email">Start a conversation <span>↗</span></a></div></section>
+    </main>
+    <footer><span>© <span data-config="year">2026</span> <span data-config="name">Alex Chen</span></span><span>Built with HTML, CSS &amp; vanilla JS · <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></span></footer>
+  </div>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
