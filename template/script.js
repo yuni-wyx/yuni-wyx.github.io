@@ -30,8 +30,12 @@
   const themes = { midnight: "Midnight", aurora: "Aurora", paper: "Paper" };
   const themeMenu = $("#themeMenu");
   Object.entries(themes).forEach(([key, label]) => { const button = document.createElement("button"); button.type = "button"; button.dataset.theme = key; button.textContent = label; button.addEventListener("click", () => setTheme(key)); themeMenu.appendChild(button); });
-  const setTheme = theme => { document.documentElement.dataset.theme = theme; localStorage.setItem("portfolio-theme", theme); themeMenu.hidden = true; $("#themeToggle").setAttribute("aria-expanded", "false"); };
-  setTheme(localStorage.getItem("portfolio-theme") || c.theme?.default || "midnight");
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch { /* file:// browsers may block storage */ } }
+  };
+  const setTheme = theme => { document.documentElement.dataset.theme = theme; storage.set("portfolio-theme", theme); themeMenu.hidden = true; $("#themeToggle").setAttribute("aria-expanded", "false"); };
+  setTheme(storage.get("portfolio-theme") || c.theme?.default || "midnight");
   $("#themeToggle").addEventListener("click", () => { themeMenu.hidden = !themeMenu.hidden; $("#themeToggle").setAttribute("aria-expanded", String(!themeMenu.hidden)); });
   const menu = $("#mobileNav"); $("#menuToggle").addEventListener("click", () => { const open = menu.classList.toggle("open"); $("#menuToggle").setAttribute("aria-expanded", String(open)); });
   menu.addEventListener("click", () => { menu.classList.remove("open"); $("#menuToggle").setAttribute("aria-expanded", "false"); });
