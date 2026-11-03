@@ -46,7 +46,21 @@
     }
     return wrap;
   }
-  function renderRoleCard(card, project, info, index, slot) {
+  function go1Visual() {
+    // Preserve the original CSS-based quadruped silhouette in the new renderer.
+    // This uses the same classes and layer order as the original Robotics card.
+    const visual=node('div','go1-visual');
+    visual.setAttribute('aria-hidden','true');
+    visual.append(node('div','go1-grid'),node('div','go1-orbit'));
+    const bot=node('div','go1-bot');
+    for (const cls of ['go1-node n1','go1-node n2','go1-node n3',
+      'go1-back','go1-body','go1-neck','go1-head',
+      'go1-joint j1','go1-joint j2','go1-joint j3','go1-joint j4',
+      'go1-leg l1','go1-leg l2','go1-leg l3','go1-leg l4']) bot.append(node('div',cls));
+    visual.append(bot,node('div','go1-caption','unitree go1 silhouette'));
+    return visual;
+  }
+  function renderRoleCard(card, project, info, index, slot, id) {
     const body = node('div',slot === 'primary' ? 'proj-feature-copy' : '');
     const heading = node('div','proj-index');
     heading.append(node('span','mono-xs',`${String(index + 1).padStart(2,'0')} / ${project.category.toUpperCase()}`));
@@ -58,7 +72,10 @@
     const actions=links(project,false);
     if (actions.childElementCount) body.append(actions);
     if (slot === 'primary') {
-      const grid=node('div','proj-feature-grid');grid.append(body);card.replaceChildren(grid);
+      const grid=node('div','proj-feature-grid');
+      grid.append(body);
+      if (id === 'go1') grid.append(go1Visual());
+      card.replaceChildren(grid);
     } else if (slot === 'wide') {
       const grid=node('div','proj-wide-grid');grid.append(body);card.replaceChildren(grid);
     } else card.replaceChildren(...Array.from(body.childNodes));
@@ -80,7 +97,7 @@
     const card=cards[i],project=projects[id],info=content[id];
     card.dataset.projectId=id;
     if (linkedIn) renderLinkedInCard(card,project,info);
-    else renderRoleCard(card,project,info,i,i===0?'primary':i===3?'wide':'stack');
+    else renderRoleCard(card,project,info,i,i===0?'primary':i===3?'wide':'stack',id);
   });
   if (!linkedIn) {
     const heroEntries = Array.from(document.querySelectorAll('.hero-entry-grid .hero-entry'));
