@@ -48,6 +48,10 @@ open-source template/
 ```
 # Portfolio shared-data integration (local working copy, 2026-11-03)
 
+- Follow-up: added user-supplied public demo links for AuraFlow, FITMATCH, Mini Game Hub, and The Book of Answers.
+- Additional Projects now use full-width horizontal cards, project-specific outline icons, responsive layout, and subtle hover effects.
+- Browser automation unavailable in this environment (Playwright browser binary not installed); static checks performed.
+
 - Added a shared eight-project catalog (seven requested projects plus existing Go1).
 - Added role-specific additional-project selections across five public pages.
 - Existing hand-authored featured cards and public URL paths remain unchanged.

@@ -19,6 +19,8 @@ HTML for visual and content compatibility, pending a separate migration.
 To add a project, create a unique ID in `data/projects.js`, then add that ID to
 the appropriate role arrays in `data/profiles.js`. Missing demo/GitHub URLs are
 intentionally omitted from rendered buttons. Do not link private repositories.
+The Additional Projects rows use `css/portfolio-projects.css` for responsive
+layout, matching outline icons, hover interaction, and reduced-motion support.
 
 Preview locally with a static server, such as `python3 -m http.server 8000`,
 then open each role page (`ai-swe.html`, `data.html`, `mle.html`,
