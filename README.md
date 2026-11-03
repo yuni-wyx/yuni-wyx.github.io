@@ -10,11 +10,18 @@ The existing role-specific pages and personal assets are preserved in the reposi
 
 ### Shared project catalog (incremental integration)
 
-The five root portfolio pages load `data/projects.js`, `data/profiles.js`, and
-`js/portfolio-projects.js`. The shared catalog contains project descriptions,
+The five root portfolio pages load `data/evidence.js`, `data/projects.js`,
+`data/profiles.js`, and `js/portfolio-projects.js`. The shared catalog contains project descriptions,
 technologies, and verified public links; the profile file selects additional
 projects for each role. Existing featured project cards remain in their original
 HTML for visual and content compatibility, pending a separate migration.
+
+`data/evidence.js` is the structured SAFE_CORE-backed evidence registry for
+quantified project claims. Keep metrics scoped to the specific experiment,
+dataset, or dated snapshot. NailAI and EmotionFlow Additional Project descriptions
+derive their numbers from this file; legacy Featured Project HTML is still static.
+Run `node scripts/audit-content.mjs` before making a local commit to check
+profile references, superseded metrics, key copy, and script loading order.
 
 To add a project, create a unique ID in `data/projects.js`, then add that ID to
 the appropriate role arrays in `data/profiles.js`. Missing demo/GitHub URLs are

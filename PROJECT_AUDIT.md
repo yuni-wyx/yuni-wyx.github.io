@@ -50,6 +50,14 @@ open-source template/
 
 ## Content accuracy pass (Phase 1/2, local only)
 
+## Structured SAFE_CORE evidence and validation (next incremental phase)
+
+- Added `data/evidence.js` as a structured source for scoped, attributable project metrics (EmotionFlow, NailAI, MyEdMaster, Go1, Go1 VLM, FITMATCH, Shopee, Stock Copilot, AuraFlow).
+- Additional Project descriptions for NailAI and EmotionFlow now derive quantified statements from their evidence records.
+- All five role pages load evidence before project descriptions. Static Featured cards remain unchanged and are checked for superseded language by `scripts/audit-content.mjs`.
+- `node scripts/audit-content.mjs`: 87 checks passed across five role pages (data IDs, source separation, load order, location, stale claims, and links).
+- This is an incremental migration: it does not yet generate all Featured cards or PDF resumes from the evidence registry. FITMATCH snapshot counts and live deployment claims are not refreshed automatically.
+
 - SAFE_CORE cross-check: the 57 EmotionFlow signals and 61.4% positive rate specifically concern **music-recommendation feedback**, not all LLM response acceptance. Updated public wording accordingly.
 - SAFE_CORE distinguishes NailAI's **zero failures in a documented 200-concurrent-user load test with p95 6.8s** from a general production failure-rate guarantee; project descriptions use the bounded benchmark language.
 - SAFE_CORE FitMatch snapshot (1,205 products, 65 profiles, 407 chart rows, 24/24 boundary cases) differs from later development counts; keep numeric catalog updates pending a fresh source check.
