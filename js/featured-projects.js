@@ -69,12 +69,12 @@
     if (slot === 'primary') body.append(brief(info),stats(info));
     else if (slot === 'stack') body.append(node('div','proj-brief',info.outcome));
     body.append(chips(project));
+    if (id === 'go1' && slot === 'primary') body.append(go1Visual());
     const actions=links(project,false);
     if (actions.childElementCount) body.append(actions);
     if (slot === 'primary') {
       const grid=node('div','proj-feature-grid');
       grid.append(body);
-      if (id === 'go1') grid.append(go1Visual());
       card.replaceChildren(grid);
     } else if (slot === 'wide') {
       const grid=node('div','proj-wide-grid');grid.append(body);card.replaceChildren(grid);
