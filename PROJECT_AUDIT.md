@@ -48,6 +48,17 @@ open-source template/
 ```
 # Portfolio shared-data integration (local working copy, 2026-11-03)
 
+## Content accuracy pass (Phase 1/2, local only)
+
+- Standardized website availability wording to **Open to Relocation** and retained **GPA 3.76/4.0** on role pages. This does not change historical/current residency records.
+- Replaced unsubstantiated EmotionFlow percentage claims with the reviewed observation of **57 feedback signals** and **61.4% positive feedback**.
+- Separated **MyEdMaster** classifier-training metrics from **NailAI** cloud inference messaging in role-specific cards and LinkedIn project content.
+- Strengthened Stock Copilot, AuraFlow, FITMATCH, and NailAI project summaries with concrete engineering action verbs and implementation detail, without inventing impact percentages.
+- Updated misleading MLE and Data hero/project labels that had attributed model evaluation metrics to NailAI.
+- **Outstanding:** linked PDF resumes remain unchanged because no editable source was supplied. They contain older location wording, and some contain superseded EmotionFlow metrics; regenerate from canonical editable resume sources before publishing.
+- **Outstanding:** verify original evaluation artifacts for historical MyEdMaster 0.92 F1, Go1 97K+ sample count, Shopee percentage deltas, and NailAI 200-user/p95 claims before presenting them as independently reproduced performance results.
+- The website is still intentionally configured with noindex role pages and no root index page; SEO/entry-point changes are outside Phase 1/2.
+
 - Follow-up: added user-supplied public demo links for AuraFlow, FITMATCH, Mini Game Hub, and The Book of Answers.
 - Additional Projects now use full-width horizontal cards, project-specific outline icons, responsive layout, and subtle hover effects.
 - Browser automation unavailable in this environment (Playwright browser binary not installed); static checks performed.
