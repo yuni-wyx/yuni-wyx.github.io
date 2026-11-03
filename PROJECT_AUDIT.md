@@ -46,3 +46,12 @@ open-source template/
     ├── LICENSE
     └── .nojekyll
 ```
+# Portfolio shared-data integration (local working copy, 2026-11-03)
+
+- Added a shared eight-project catalog (seven requested projects plus existing Go1).
+- Added role-specific additional-project selections across five public pages.
+- Existing hand-authored featured cards and public URL paths remain unchanged.
+- JavaScript source files pass `node --check`.
+- Private GitHub projects (AuraFlow, Mini Game Hub, oracle-book) do not receive public GitHub links. FITMATCH link is unverified and omitted.
+- Remaining: migrate legacy featured-card markup into the shared renderer after visual regression testing; add actual screenshots and confirmed public demos.
+
