@@ -16,12 +16,13 @@ technologies, and verified public links; the profile file selects additional
 projects for each role. Existing featured project cards remain in their original
 HTML for visual and content compatibility, pending a separate migration.
 
-Featured card IDs and role-specific naming/description overrides now live in
-`data/profiles.js`. The renderer hydrates existing Featured titles, summaries,
-and public links from `data/projects.js`, retaining the legacy card layout and
-role-specific Problem/Built/Outcome sections. Visual slot order remains the
-current HTML order; changing primary/stack/wide positions requires a separate
-layout migration rather than just rearranging the ID arrays.
+Featured ordering lives in `data/profiles.js`; structured Problem/Built/Outcome
+and stat labels live in `data/featured-content.js`. The
+`js/featured-projects.js` renderer fills the existing four visual card slots
+(primary, two stacked, wide) from the requested role order and updates the
+role-page hero launch list. The original HTML remains a no-JavaScript fallback.
+For full parity, edit the fallback markup when changing a major project claim.
+Always run the content audit and visually inspect desktop/mobile after a reorder.
 
 `data/evidence.js` is the structured SAFE_CORE-backed evidence registry for
 quantified project claims. Keep metrics scoped to the specific experiment,

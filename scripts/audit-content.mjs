@@ -7,14 +7,14 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const context = { window: {} };
 vm.createContext(context);
-for (const filename of ['data/evidence.js', 'data/projects.js', 'data/profiles.js']) {
+for (const filename of ['data/evidence.js', 'data/projects.js', 'data/profiles.js', 'data/featured-content.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, filename), 'utf8'), context, { filename });
 }
 const evidence = context.window.PortfolioEvidence;
 const projects = context.window.PortfolioProjects;
 const profiles = context.window.PortfolioProjectProfiles;
 const featured = context.window.PortfolioFeaturedProfiles;
-const overrides = context.window.PortfolioFeaturedOverrides;
+const featuredContent = context.window.PortfolioFeaturedContent;
 const pages = {
   'ai-swe': 'ai-swe.html', data: 'data.html', mle: 'mle.html',
   robotics: 'robotics.html', linkedin: 'linkedin_portfolio.html'
@@ -46,7 +46,8 @@ for (const [role, filename] of Object.entries(pages)) {
   check(new Set(featured[role]).size === featured[role].length, `${role}: no duplicate featured IDs`);
   check(featured[role].every(id => Boolean(projects[id])), `${role}: featured IDs in catalog`);
   check(profiles[role].every(id => !featured[role].includes(id)), `${role}: featured/additional disjoint`);
-  check(typeof overrides[role] === 'object', `${role}: role-specific overrides`);
+  check(featured[role].every(id => Boolean(featuredContent[id]?.problem && featuredContent[id]?.built && featuredContent[id]?.outcome)), `${role}: structured narrative exists`);
+  check(html.includes('data/featured-content.js') && html.includes('js/featured-projects.js'), `${role}: featured renderer loaded`);
   const cardCount = role === 'linkedin'
     ? (html.match(/class="project-card"/g) || []).length
     : (html.match(/class="proj-card(?: featured| proj-wide|\")/g) || []).length;

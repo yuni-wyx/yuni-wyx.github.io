@@ -54,6 +54,14 @@ open-source template/
 
 ## Featured Project metadata integration
 
+## Featured narrative and visual-slot ordering
+
+- Added structured `data/featured-content.js` for Problem, Built, Outcome, and measurement badges with SAFE_CORE-aligned scope.
+- Added `js/featured-projects.js` to render the role-specific primary/stack/wide cards and synchronize hero featured-work entries while preserving existing layout containers.
+- Role selections now prioritize Stock/AuraFlow/FITMATCH/NailAI for AI SWE, Shopee/FITMATCH/NailAI/Stock for Data, Go1/MyEdMaster/NailAI/EmotionFlow for MLE, Go1/VLM/NailAI/Stock for Robotics, and FITMATCH/Stock/AuraFlow/NailAI for LinkedIn.
+- Legacy HTML remains as progressive enhancement fallback; current JS-driven Featured content and order are authoritative for visitors with JavaScript enabled.
+- Browser visual regression remains outstanding in this environment because the Playwright browser executable is unavailable. Preview the reordered pages locally before any deploy.
+
 - Added `PortfolioFeaturedProfiles` (existing visual-slot order) and role-specific title/summary overrides to `data/profiles.js`.
 - Shared renderer now hydrates Featured title, project summary, and known public links from the catalog across the five role pages, while retaining legacy narrative markup and visual CSS.
 - Added canonical Shopee data-validation entry so the Data Engineer featured project has a project ID and shared summary.
