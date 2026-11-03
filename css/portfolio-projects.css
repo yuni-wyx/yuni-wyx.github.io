@@ -6,7 +6,7 @@
 .portfolio-additional-card:hover::before{opacity:1;transform:translateX(20%)}
 .portfolio-project-icon{display:grid;place-items:center;width:64px;height:64px;flex:none;border:1px solid rgba(95,194,221,.3);border-radius:18px;color:var(--cyan,#59d8e9);background:linear-gradient(140deg,rgba(88,191,219,.14),rgba(88,191,219,.035));transition:transform .3s ease,background .3s ease}
 .portfolio-project-icon svg{width:31px;height:31px}
-.portfolio-additional-card:hover .portfolio-project-icon{transform:rotate(-5deg) scale(1.055);background:rgba(88,191,219,.2)}
+.portfolio-additional-card:hover .portfolio-project-icon{transform:scale(1.055);background:rgba(88,191,219,.2)}
 .portfolio-project-copy{min-width:0}
 .portfolio-additional-card .proj-index{margin-bottom:8px}
 .portfolio-additional-card .proj-title{font-size:clamp(20px,2vw,25px);line-height:1.2;margin:0 0 9px}
