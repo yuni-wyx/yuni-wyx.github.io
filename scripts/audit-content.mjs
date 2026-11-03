@@ -13,6 +13,8 @@ for (const filename of ['data/evidence.js', 'data/projects.js', 'data/profiles.j
 const evidence = context.window.PortfolioEvidence;
 const projects = context.window.PortfolioProjects;
 const profiles = context.window.PortfolioProjectProfiles;
+const featured = context.window.PortfolioFeaturedProfiles;
+const overrides = context.window.PortfolioFeaturedOverrides;
 const pages = {
   'ai-swe': 'ai-swe.html', data: 'data.html', mle: 'mle.html',
   robotics: 'robotics.html', linkedin: 'linkedin_portfolio.html'
@@ -40,6 +42,15 @@ for (const [role, filename] of Object.entries(pages)) {
   check(!/57% recommendation acceptance|34% hallucination|hallucination reduction/i.test(html), `${role}: superseded metrics`);
   check(!/href=["']#["']/.test(html), `${role}: placeholder links`);
   check(Array.isArray(profiles[role]), `${role}: profile exists`);
+  check(Array.isArray(featured[role]) && featured[role].length === 4, `${role}: four featured IDs`);
+  check(new Set(featured[role]).size === featured[role].length, `${role}: no duplicate featured IDs`);
+  check(featured[role].every(id => Boolean(projects[id])), `${role}: featured IDs in catalog`);
+  check(profiles[role].every(id => !featured[role].includes(id)), `${role}: featured/additional disjoint`);
+  check(typeof overrides[role] === 'object', `${role}: role-specific overrides`);
+  const cardCount = role === 'linkedin'
+    ? (html.match(/class="project-card"/g) || []).length
+    : (html.match(/class="proj-card(?: featured| proj-wide|\")/g) || []).length;
+  check(cardCount >= featured[role].length, `${role}: enough legacy featured cards`);
   check(new Set(profiles[role]).size === profiles[role].length, `${role}: no duplicate additional projects`);
   for (const id of profiles[role]) check(Boolean(projects[id]), `${role}: missing catalog project ${id}`);
 }

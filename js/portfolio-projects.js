@@ -9,6 +9,38 @@
   const wrap = section.querySelector('.wrap');
   if (!wrap || !list.length) return;
 
+  // Hydrate legacy featured cards from the shared catalog without replacing their
+  // carefully composed Problem/Built/Outcome markup or visual slot structure.
+  const featuredIds = window.PortfolioFeaturedProfiles?.[profile] || [];
+  const featuredOverrides = window.PortfolioFeaturedOverrides?.[profile] || {};
+  const featuredCards = profile === 'linkedin'
+    ? Array.from(section.querySelectorAll('.project-grid > .project-card'))
+    : Array.from(section.querySelectorAll('.proj-layout > .proj-card, .proj-stack > .proj-card, .proj-card.proj-wide'));
+  for (let i = 0; i < featuredCards.length; i++) {
+    const id = featuredIds[i];
+    const item = catalog[id];
+    if (!item) continue;
+    const card = featuredCards[i];
+    const copy = featuredOverrides[id] || {};
+    card.dataset.projectId = id;
+    const title = card.querySelector('.proj-title, .project-title');
+    const description = card.querySelector('.proj-desc, .project-desc');
+    if (title) title.textContent = copy.name || item.name;
+    if (description) description.textContent = copy.description || item.description;
+    const actions = card.querySelector('.proj-actions, .project-links');
+    if (actions) {
+      for (const link of actions.querySelectorAll('a')) {
+        const isGithub = /github/i.test(link.textContent);
+        const nextUrl = isGithub ? item.github : item.demo;
+        if (nextUrl && /^https:\/\//.test(nextUrl)) {
+          link.href = nextUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      }
+    }
+  }
+
   const heading = document.createElement('h3');
   heading.textContent = 'Additional Projects';
   heading.className = 'portfolio-additional-heading';

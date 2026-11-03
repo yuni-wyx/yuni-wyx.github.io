@@ -52,6 +52,14 @@ open-source template/
 
 ## Structured SAFE_CORE evidence and validation (next incremental phase)
 
+## Featured Project metadata integration
+
+- Added `PortfolioFeaturedProfiles` (existing visual-slot order) and role-specific title/summary overrides to `data/profiles.js`.
+- Shared renderer now hydrates Featured title, project summary, and known public links from the catalog across the five role pages, while retaining legacy narrative markup and visual CSS.
+- Added canonical Shopee data-validation entry so the Data Engineer featured project has a project ID and shared summary.
+- Content audit extended to validate Featured IDs, featured/additional disjointness, profile overrides, and expected card counts; **118 checks passed**.
+- Remaining migration: move rich Problem/Built/Outcome narratives and technology chips into structured data, then implement safe primary/stack/wide slot reorder with browser visual regression testing. Current `featured` arrays document **existing** order, not a user-configurable visual reorder.
+
 - Added `data/evidence.js` as a structured source for scoped, attributable project metrics (EmotionFlow, NailAI, MyEdMaster, Go1, Go1 VLM, FITMATCH, Shopee, Stock Copilot, AuraFlow).
 - Additional Project descriptions for NailAI and EmotionFlow now derive quantified statements from their evidence records.
 - All five role pages load evidence before project descriptions. Static Featured cards remain unchanged and are checked for superseded language by `scripts/audit-content.mjs`.

@@ -16,6 +16,13 @@ technologies, and verified public links; the profile file selects additional
 projects for each role. Existing featured project cards remain in their original
 HTML for visual and content compatibility, pending a separate migration.
 
+Featured card IDs and role-specific naming/description overrides now live in
+`data/profiles.js`. The renderer hydrates existing Featured titles, summaries,
+and public links from `data/projects.js`, retaining the legacy card layout and
+role-specific Problem/Built/Outcome sections. Visual slot order remains the
+current HTML order; changing primary/stack/wide positions requires a separate
+layout migration rather than just rearranging the ID arrays.
+
 `data/evidence.js` is the structured SAFE_CORE-backed evidence registry for
 quantified project claims. Keep metrics scoped to the specific experiment,
 dataset, or dated snapshot. NailAI and EmotionFlow Additional Project descriptions
