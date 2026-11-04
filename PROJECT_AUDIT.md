@@ -46,3 +46,55 @@ open-source template/
     ├── LICENSE
     └── .nojekyll
 ```
+# Portfolio shared-data integration (local working copy, 2026-11-03)
+
+## Content accuracy pass (Phase 1/2, local only)
+
+## Structured SAFE_CORE evidence and validation (next incremental phase)
+
+## Featured Project metadata integration
+
+## Featured narrative and visual-slot ordering
+
+- Added structured `data/featured-content.js` for Problem, Built, Outcome, and measurement badges with SAFE_CORE-aligned scope.
+- Added `js/featured-projects.js` to render the role-specific primary/stack/wide cards and synchronize hero featured-work entries while preserving existing layout containers.
+- Role selections now prioritize Stock/AuraFlow/FITMATCH/NailAI for AI SWE, Shopee/FITMATCH/NailAI/Stock for Data, Go1/MyEdMaster/NailAI/EmotionFlow for MLE, Go1/VLM/NailAI/Stock for Robotics, and FITMATCH/Stock/AuraFlow/NailAI for LinkedIn.
+- Legacy HTML remains as progressive enhancement fallback; current JS-driven Featured content and order are authoritative for visitors with JavaScript enabled.
+- Browser visual regression remains outstanding in this environment because the Playwright browser executable is unavailable. Preview the reordered pages locally before any deploy.
+
+- Added `PortfolioFeaturedProfiles` (existing visual-slot order) and role-specific title/summary overrides to `data/profiles.js`.
+- Shared renderer now hydrates Featured title, project summary, and known public links from the catalog across the five role pages, while retaining legacy narrative markup and visual CSS.
+- Added canonical Shopee data-validation entry so the Data Engineer featured project has a project ID and shared summary.
+- Content audit extended to validate Featured IDs, featured/additional disjointness, profile overrides, and expected card counts; **118 checks passed**.
+- Remaining migration: move rich Problem/Built/Outcome narratives and technology chips into structured data, then implement safe primary/stack/wide slot reorder with browser visual regression testing. Current `featured` arrays document **existing** order, not a user-configurable visual reorder.
+
+- Added `data/evidence.js` as a structured source for scoped, attributable project metrics (EmotionFlow, NailAI, MyEdMaster, Go1, Go1 VLM, FITMATCH, Shopee, Stock Copilot, AuraFlow).
+- Additional Project descriptions for NailAI and EmotionFlow now derive quantified statements from their evidence records.
+- All five role pages load evidence before project descriptions. Static Featured cards remain unchanged and are checked for superseded language by `scripts/audit-content.mjs`.
+- `node scripts/audit-content.mjs`: 87 checks passed across five role pages (data IDs, source separation, load order, location, stale claims, and links).
+- This is an incremental migration: it does not yet generate all Featured cards or PDF resumes from the evidence registry. FITMATCH snapshot counts and live deployment claims are not refreshed automatically.
+
+- SAFE_CORE cross-check: the 57 EmotionFlow signals and 61.4% positive rate specifically concern **music-recommendation feedback**, not all LLM response acceptance. Updated public wording accordingly.
+- SAFE_CORE distinguishes NailAI's **zero failures in a documented 200-concurrent-user load test with p95 6.8s** from a general production failure-rate guarantee; project descriptions use the bounded benchmark language.
+- SAFE_CORE FitMatch snapshot (1,205 products, 65 profiles, 407 chart rows, 24/24 boundary cases) differs from later development counts; keep numeric catalog updates pending a fresh source check.
+
+- Standardized website availability wording to **Open to Relocation** and retained **GPA 3.76/4.0** on role pages. This does not change historical/current residency records.
+- Replaced unsubstantiated EmotionFlow percentage claims with the reviewed observation of **57 feedback signals** and **61.4% positive feedback**.
+- Separated **MyEdMaster** classifier-training metrics from **NailAI** cloud inference messaging in role-specific cards and LinkedIn project content.
+- Strengthened Stock Copilot, AuraFlow, FITMATCH, and NailAI project summaries with concrete engineering action verbs and implementation detail, without inventing impact percentages.
+- Updated misleading MLE and Data hero/project labels that had attributed model evaluation metrics to NailAI.
+- **Outstanding:** linked PDF resumes remain unchanged because no editable source was supplied. They contain older location wording, and some contain superseded EmotionFlow metrics; regenerate from canonical editable resume sources before publishing.
+- **Outstanding:** verify original evaluation artifacts for historical MyEdMaster 0.92 F1, Go1 97K+ sample count, Shopee percentage deltas, and NailAI 200-user/p95 claims before presenting them as independently reproduced performance results.
+- The website is still intentionally configured with noindex role pages and no root index page; SEO/entry-point changes are outside Phase 1/2.
+
+- Follow-up: added user-supplied public demo links for AuraFlow, FITMATCH, Mini Game Hub, and The Book of Answers.
+- Additional Projects now use full-width horizontal cards, project-specific outline icons, responsive layout, and subtle hover effects.
+- Browser automation unavailable in this environment (Playwright browser binary not installed); static checks performed.
+
+- Added a shared eight-project catalog (seven requested projects plus existing Go1).
+- Added role-specific additional-project selections across five public pages.
+- Existing hand-authored featured cards and public URL paths remain unchanged.
+- JavaScript source files pass `node --check`.
+- Private GitHub projects (AuraFlow, Mini Game Hub, oracle-book) do not receive public GitHub links. FITMATCH link is unverified and omitted.
+- Remaining: migrate legacy featured-card markup into the shared renderer after visual regression testing; add actual screenshots and confirmed public demos.
+
